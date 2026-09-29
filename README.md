@@ -92,6 +92,14 @@ result is compared with random ciphertexts under the same crib set.
 - Hill 4×4: alignment 0 becomes testable and is eliminated; alignment 3 is still untestable.
 - Periodic 27–48: no survivors.
 
+**OF at 35–36 (…NORTHEASTOF…), IS at 75–76 (…CLOCKIS…), and all three with THE:**
+- Hill 4×4: with OF or IS, all four alignments become testable and all are eliminated.
+- Quagmire I/II with any alphabet: with all three guesses, only 23 and 24 stay open (plus 19 for QII on one constraint).
+- General Quagmire III Beaufort: with all three guesses, 13, 18 and 26 are UNSAT; 23 stays SAT at random-text rates.
+- General Quagmire IV with all three guesses: 8, 13, 16, 20 UNSAT. 19 is SAT (the R→P repeat again); 23 and 24 are SAT at random-text rates; 26 is being resolved.
+- IS alone makes QIV period 8 SAT, but random text is SAT there 9/30 (C solver, `calib_c.py vig4 8 30 180 75:IS`), so that is chance. The Python solver's timeouts had made random text look rarer than it is.
+- Nothing under any of these guesses beats the random-text rate.
+
 ## The World Clock
 
 Sanborn confirmed in November 2025 that BERLINCLOCK means the Weltzeituhr at Alexanderplatz. Its
