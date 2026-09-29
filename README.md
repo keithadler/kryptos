@@ -48,4 +48,7 @@ Python 3 with numpy, and a C compiler.
 | `results/` | The evidence logs cited in SEARCH.md |
 | `data/` | Sculpture text and other inputs, with provenance in `data/SOURCES.md` |
 
-Wikipedia-derived files in `data/` are CC BY-SA 4.0.
+## License
+
+Code: MIT (see `LICENSE`). The Wikipedia-derived files in `data/` (`wiki_kryptos.txt`,
+`sculpture_left.txt`, `tableau.txt`, `weltzeituhr_de.txt`) are CC BY-SA 4.0, from the sources in `data/SOURCES.md`.
