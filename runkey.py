@@ -16,7 +16,7 @@ import numpy as np
 from kryptos import K4, CRIBS, CRIB_POS, AZ, KA
 import attacks
 
-THRESH = int(sys.argv[1]) if len(sys.argv) > 1 else 12
+THRESH = 12
 POS = np.array(CRIB_POS)
 
 
@@ -74,4 +74,6 @@ def main():
 
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        THRESH = int(sys.argv[1])
     main()

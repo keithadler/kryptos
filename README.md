@@ -35,6 +35,8 @@ python3 digits.py                         # Gronsfeld / Gromark / digit keystrea
 python3 trifid.py                         # Trifid, any cube, via coordinate equalities
 python3 mixedalpha.py                     # Quagmire I/II with any of the 26! alphabets
 python3 quag34.py                         # Quagmire III/IV with unknown alphabet(s) on both sides
+cc -O3 -o quag3 quag3.c && ./quag3 vig 18 # same for QIII, in C, for the periods Python timed out on
+python3 quadgrams.py && cc -O3 -o sa sa.c -lm && ./run_sa_k4.sh   # English-scored annealing + random baselines
 ```
 
 Harness check: `kryptos.py` decrypts K1 with the KRYPTOS tableau and PALIMPSEST exactly.
@@ -67,6 +69,7 @@ Vigenère, Beaufort, variant Beaufort and Quagmire I–IV keyed with KRYPTOS: 8 
 | Anything built on a 5×5 square (Bifid, Playfair, two-square, four-square, ADFGX) | **Eliminated outright:** K4 uses all 26 letters, and a 5×5 square outputs only 25 |
 | **Any masking alphabet, then a repeating key** (general Quagmire I), and **a repeating key, then any substitution of the output** (general Quagmire II): all 26! alphabets at once via difference equations mod 26 (`mixedalpha.py`) | **Eliminated for periods 1–12, 14, 15, 17, 18, 21, 22, 25.** The rest (13, 16, 19, 20, 23, 24, 26) have ≤1 constraint, so the clues can't test them with a free alphabet. Planted ciphers are recovered. |
 | **General Quagmire III** (one unknown alphabet on both sides, the K1/K2 cipher type with any alphabet) and **general Quagmire IV** (two independent unknown alphabets), periods 1–26 (`quag34.py`, calibrated by `calib_quag.py`) | **QIII Vigenère: eliminated at 1–17 and 21–26**; 18–20 hit the search limit. **QIII Beaufort: eliminated at 1–10, 12, 14–17, 21, 22, 24**; 11, 13, 18–20 and 25 hit the limit; 23 and 26 are satisfiable, but 10–27 of 30 random ciphertexts are too. **QIV: eliminated at 1–7, 9, 10, 15, 17, 22, 25**. Satisfiable at 8, 13, 16, 19, 20, 23, 24, 26, but random ciphertexts pass those at similar or higher rates (9–30 of 30 SAT outright, most of the rest timeouts), so none of that is evidence. The K→K at 74 kills most QIII periods outright: one alphabet on both sides forces a zero shift on that key residue. |
+| **English-scored attack on the periods the clues can't test** (`sa.c`, simulated annealing over the free alphabet and key, English quadgram score + clue weight; quadgrams built by `quadgrams.py`) | **Negative wherever the method is proven.** Planted ciphers are recovered 88–97/97: QI (free plaintext alphabet, KA ciphertext) at periods 13, 16, 20, 24; QII (AZ plaintext, free ciphertext) at 13, 16. Recovered plaintexts score −4.2 to −4.4 per quadgram with 24/24 clues. K4's best at every mode/period is −4.6 to −5.7 with 16–24 clues, which is the same range random ciphertexts reach (−4.8 to −5.5, 16–22 clues). **Not informative:** QIV at period 8 (planted recovery only 38–61/97; the method makes English-looking junk), QII at 20+, QI at 26. |
 | Playfair, Porta, and any cipher that never maps a letter to itself | **Eliminated outright:** position 74 is K→K |
 | Periodic key with period 27–48 plus one guessed word (52 theme words: WELTZEITUHR, BERLINWALL, EGYPT, COMPASSROSE, DELIVER, …) at every open position (`drag.py`) | **No signal.** 23 survivors against ~109 expected by chance, and none holding 4+ constraints. |
 
