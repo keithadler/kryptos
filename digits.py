@@ -5,6 +5,7 @@ dictionary keyed alphabet, and each direction (C = P + d, or C = P - d), check w
 crib shifts are digits. A random alphabet passes with odds (10/26)^24 ~ 1e-10.
 Any survivor would then need its digit keystream checked (e.g. Gromark's lagged-Fibonacci primer).
 """
+import os
 import re
 import numpy as np
 from kryptos import K4, CRIBS, CRIB_POS, AZ, KA
@@ -14,7 +15,7 @@ from dictalpha import alphabet_index, PL
 def main(ct=K4, extra_words=()):
     """Returns the list of alphabet arrangements whose 24 forced shifts are all digits."""
     words = set()
-    for f in ("/usr/share/dict/words", "/usr/share/dict/propernames"):
+    for f in [p for p in ("/usr/share/dict/words", "/usr/share/dict/propernames") if os.path.exists(p)]:
         for line in open(f):
             w = line.strip().upper()
             if re.fullmatch(r"[A-Z]+", w): words.add(w)

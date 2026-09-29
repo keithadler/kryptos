@@ -4,6 +4,7 @@ Arrangements (x = plaintext alphabet, y = ciphertext alphabet, W = keyed(word)):
   Q1 x=W  y=AZ     Q2 x=AZ y=W     Q3 x=W y=W     KA-W x=KA y=W     W-KA x=W y=KA
 each as Vigenere (y(C) = x(P) + k) and Beaufort (y(C) = k - x(P)).
 """
+import os
 import re
 import sys
 import numpy as np
@@ -63,7 +64,7 @@ def main(words):
 
 if __name__ == "__main__":
     words = set()
-    for f in ("/usr/share/dict/words", "/usr/share/dict/propernames"):
+    for f in [p for p in ("/usr/share/dict/words", "/usr/share/dict/propernames") if os.path.exists(p)]:
         for line in open(f):
             w = line.strip().upper()
             if re.fullmatch(r"[A-Z]+", w):

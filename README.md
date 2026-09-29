@@ -1,54 +1,77 @@
-# Kryptos K4: a documented search
+# kryptos
 
-K4, the 97-letter fourth passage of Jim Sanborn's *Kryptos* sculpture, is still publicly unsolved.
-This repo records a systematic search: what the 24 plaintext letters Sanborn released rule out,
-how each claim was checked, and what they cannot decide. It has not found a solution.
+[![CI](https://github.com/keithadler/kryptos/actions/workflows/ci.yml/badge.svg)](https://github.com/keithadler/kryptos/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/keithadler/kryptos?sort=semver)](https://github.com/keithadler/kryptos/releases/latest)
+[![License](https://img.shields.io/github/license/keithadler/kryptos)](https://github.com/keithadler/kryptos/blob/main/LICENSE)
 
-**Read [SEARCH.md](SEARCH.md)** for the method, every result with its evidence, the assumptions
-behind "eliminated", and what remains open.
+**Kryptos K4, searched in the open.** What the 24 letters Sanborn has revealed rule out, with every
+claim checked against planted ciphers. No solution here. This is an honest map of why.
 
-## In short
+*Kryptos* is a copper sculpture by Jim Sanborn at CIA headquarters in Langley, Virginia, installed
+in 1990. It carries four encrypted passages. The first three (K1–K3) were cracked by 1999, using a
+Vigenère cipher keyed with the word KRYPTOS for K1 and K2 and a transposition for K3. The fourth,
+**K4**, is 97 letters long and has never been publicly solved.
 
-- **Eliminated**, wherever the clues can test it:
-  - every repeating-key tableau cipher (Vigenère, Beaufort, Quagmire) up to key length 26, with standard, KRYPTOS, theme-word or any of 209k dictionary alphabets;
-  - autokey, progressive and digit keys;
-  - running keys from K1–K3, the sculpture, Carter's *Tomb of Tut-ankh-Amen* and the Bible;
-  - Hill, Trifid, Playfair and every 5×5-square cipher;
-  - columnar transposition with every column order up to width 14;
-  - K3's rotation method;
-  - the K1/K2 cipher with *any* alphabet on both sides;
-  - the K1/K2 cipher applied twice ("LAYER TWO").
-- **Every claim is checked against planted ciphers.** `make verify` shows each search finding a
-  known example of the family it rules out.
-- **Nothing beats chance.** Every apparent survivor was compared with what random ciphertexts
-  produce under the same test, and none stood out.
-- **Open:** families the 24 letters are too few to decide: two free alphabets, long keys, stacked
-  layers, and hand methods with no clean form. The realistic way forward is more plaintext or the
-  release of K5.
+Its answer does exist. In 2025 two journalists found it in Sanborn's papers at the Smithsonian,
+and those files are now sealed until 2075. The archive sold at auction, and the buyer, Paradigm,
+checks submitted answers for $1 each without learning the solution. But neither the text nor the
+method has been published. The only public evidence is the carved ciphertext and 24 letters of
+plaintext that Sanborn released between 2010 and 2020: EAST NORTHEAST and BERLIN CLOCK.
 
-## Quick start
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/k4-carved-dark.svg">
+  <img alt="K4 as carved, four lines, with the 24 decoded letters marked and their plaintext underneath" src="docs/k4-carved-light.svg">
+</picture>
+
+This repo uses those 24 letters as hard constraints. For each kind of cipher, the question is:
+*could any key of this kind turn the carved letters into EAST NORTHEAST and BERLIN CLOCK at the
+right places?* If no key can, that cipher is ruled out. That's a proof, not a guess. Every search
+is also run on a fake ciphertext with a known answer planted in it, and it has to find it. And
+every apparent hit is compared with what random letters produce under the same test.
+
+## What's ruled out
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/map-dark.svg">
+  <img alt="Grid of cipher families against key lengths 1 to 26. Nearly every cell is ruled out; the exceptions are cells the 24 letters are too few to test, cells where random text also fits, and a few searches that did not finish." src="docs/map-light.svg">
+</picture>
+
+Also ruled out:
+- running keys taken from the K1–K3 solutions, the sculpture itself, Howard Carter's *The Tomb of
+  Tut-ankh-Amen* (the source of K3) and the Bible;
+- the Hill cipher, and anything built on a 5×5 square (Playfair, Bifid, four-square);
+- K1/K2's cipher applied twice (K2 ends with the words "LAYER TWO");
+- ciphers that can't turn a letter into itself: position 74 is K→K.
+
+What's left is what 24 letters can't decide: two unknown alphabets at once, long keys, stacked
+layers, or a hand method with no clean mathematical form. More plaintext would decide much of it,
+and so would **K5**, a second 97-letter passage Sanborn made alongside K4, which Paradigm plans to
+release.
+
+**[SEARCH.md](SEARCH.md)** has the full account: the method, the assumptions behind every "ruled
+out", each result with its evidence log, guessed-plaintext experiments, and what remains open.
+
+## Run it
 
 ```
-make verify                 # build the C searchers, run the 21 planted-cipher checks
-checks/fetch_texts.sh       # optional: download the public-domain running-key texts
+make verify                 # build, then 21 planted-cipher checks (~25 s)
+checks/fetch_texts.sh       # optional: the public-domain texts tried as running keys
 checks/reproduce.sh         # regenerate the evidence logs in results/
+python3 docs/make_figures.py
 ```
 
 Python 3 with numpy, and a C compiler.
 
-## Layout
-
 | Path | What |
 |---|---|
-| `kryptos.py` | K4, the clues, the alphabets, the tableau operations, hypothesis mode |
-| `attacks.py`, `typo.py`, `dictalpha.py`, `digits.py`, `trifid.py`, `mixedalpha.py`, `quag34.py`, `layer2.py`, `runkey.py`, `runkey_mixed.py`, `drag.py`, `guess_run.py` | The searches, one family each (see SEARCH.md §4) |
-| `c/` | C searchers: columnar/rotation/keyword transposition (`trans`), pruned every-order columnar (`dfs`), Quagmire III/IV solver (`quag3`), annealing (`sa`) |
-| `verify.py` | Planted-cipher checks for every search |
-| `checks/` | Calibration against random ciphertexts, text download, evidence regeneration |
-| `results/` | The evidence logs cited in SEARCH.md |
-| `data/` | Sculpture text and other inputs, with provenance in `data/SOURCES.md` |
+| `kryptos.py` | K4, the known letters, the alphabets, the cipher operations |
+| `*.py` in the root | One search per cipher family (see SEARCH.md §4) |
+| `c/` | The heavy searches in C: transposition, every-column-order, unknown-alphabet solver, annealing |
+| `verify.py` | The planted-cipher checks |
+| `checks/` | Random-text calibration, downloads, evidence regeneration |
+| `results/` | The evidence logs SEARCH.md cites |
+| `docs/` | The figures and the script that draws them |
 
 ## License
 
-Code: MIT (see `LICENSE`). The Wikipedia-derived files in `data/` (`wiki_kryptos.txt`,
-`sculpture_left.txt`, `tableau.txt`, `weltzeituhr_de.txt`) are CC BY-SA 4.0, from the sources in `data/SOURCES.md`.
+Code: MIT. The Wikipedia-derived files in `data/` are CC BY-SA 4.0 (see `data/SOURCES.md`).

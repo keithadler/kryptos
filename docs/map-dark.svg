@@ -1,0 +1,305 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1072 448" width="1072" height="448" role="img" aria-label="Map of which cipher families the 24 known letters rule out at each key length 1 to 26">
+<defs><pattern id="hatch-dark" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#1a1a19"/><line x1="0" y1="0" x2="0" y2="6" stroke="#5c5b56" stroke-width="2"/></pattern></defs>
+<rect width="1072" height="448" fill="#1a1a19"/>
+<text x="20" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#ffffff">What the 24 known letters rule out</text>
+<text x="20" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#c3c2b7">Each cell is one cipher family at one key length. Evidence log for each row in results/.</text>
+<text x="736" y="56" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#c3c2b7">key length</text>
+<text x="1028" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#8a897f">log</text>
+<text x="460.0" y="70" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#c3c2b7">1</text>
+<text x="548.0" y="70" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#c3c2b7">5</text>
+<text x="658.0" y="70" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#c3c2b7">10</text>
+<text x="768.0" y="70" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#c3c2b7">15</text>
+<text x="878.0" y="70" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#c3c2b7">20</text>
+<text x="988.0" y="70" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#c3c2b7">25</text>
+<text x="1010.0" y="70" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#c3c2b7">26</text>
+<text x="20" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" fill="#ffffff">Repeating key, standard or KRYPTOS alphabet</text>
+<rect x="450" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="472" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="494" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="516" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="538" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="560" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="582" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="604" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="626" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="648" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="670" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="692" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="714" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="736" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="758" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="780" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="802" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="824" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="846" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="868" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="890" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="912" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="934" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="956" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="978" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="1000" y="78" width="20" height="20" rx="3" fill="#3987e5"/>
+<text x="1028" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#8a897f">01</text>
+<text x="34" y="114" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" fill="#c3c2b7">same, with any of 209k dictionary-word alphabets</text>
+<rect x="450" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="472" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="494" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="516" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="538" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="560" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="582" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="604" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="626" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="648" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="670" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="692" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="714" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="736" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="758" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="780" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="802" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="824" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="846" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="868" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="890" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="912" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="934" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="956" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="978" y="100" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="1000" y="100" width="20" height="20" rx="3" fill="#d95926"/>
+<text x="1028" y="114" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#8a897f">09</text>
+<text x="34" y="136" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" fill="#c3c2b7">same, after or before columnar transposition (every order, widths 2–14)</text>
+<rect x="450" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="472" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="494" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="516" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="538" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="560" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="582" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="604" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="626" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="648" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="670" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="692" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="714" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="736" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="758" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="780" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="802" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="824" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="846" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="868" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="890" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="912" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="934" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="956" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="978" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="1000" y="122" width="20" height="20" rx="3" fill="#3987e5"/>
+<text x="1028" y="136" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#8a897f">05</text>
+<text x="34" y="158" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" fill="#c3c2b7">same, with K3’s grid rotation</text>
+<rect x="450" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="472" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="494" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="516" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="538" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="560" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="582" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="604" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="626" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="648" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="670" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="692" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="714" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="736" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="758" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="780" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="802" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="824" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="846" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="868" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="890" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="912" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="934" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="956" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="978" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="1000" y="144" width="20" height="20" rx="3" fill="#3987e5"/>
+<text x="1028" y="158" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#8a897f">06</text>
+<text x="20" y="180" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" fill="#ffffff">Digit keys (Gronsfeld, Gromark), any alphabet</text>
+<rect x="450" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="472" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="494" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="516" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="538" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="560" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="582" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="604" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="626" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="648" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="670" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="692" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="714" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="736" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="758" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="780" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="802" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="824" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="846" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="868" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="890" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="912" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="934" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="956" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="978" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="1000" y="166" width="20" height="20" rx="3" fill="#3987e5"/>
+<text x="1028" y="180" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#8a897f">11</text>
+<text x="20" y="202" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" fill="#ffffff">Any masking alphabet, then a repeating key</text>
+<rect x="450" y="188" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="472" y="188" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="494" y="188" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="516" y="188" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="538" y="188" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="560" y="188" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="582" y="188" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="604" y="188" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="626" y="188" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="648" y="188" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="670" y="188" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="692" y="188" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="714" y="188" width="20" height="20" rx="3" fill="#383835"/>
+<rect x="736" y="188" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="758" y="188" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="780" y="188" width="20" height="20" rx="3" fill="#383835"/>
+<rect x="802" y="188" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="824" y="188" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="846" y="188" width="20" height="20" rx="3" fill="#383835"/>
+<rect x="868" y="188" width="20" height="20" rx="3" fill="#383835"/>
+<rect x="890" y="188" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="912" y="188" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="934" y="188" width="20" height="20" rx="3" fill="#383835"/>
+<rect x="956" y="188" width="20" height="20" rx="3" fill="#383835"/>
+<rect x="978" y="188" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="1000" y="188" width="20" height="20" rx="3" fill="#383835"/>
+<text x="1028" y="202" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#8a897f">13</text>
+<text x="20" y="224" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" fill="#ffffff">K1/K2’s cipher with any alphabet, Vigenère form</text>
+<rect x="450" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="472" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="494" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="516" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="538" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="560" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="582" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="604" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="626" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="648" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="670" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="692" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="714" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="736" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="758" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="780" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="802" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="824" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="846" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="868" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="890" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="912" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="934" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="956" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="978" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="1000" y="210" width="20" height="20" rx="3" fill="#3987e5"/>
+<text x="1028" y="224" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#8a897f">14</text>
+<text x="34" y="246" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" fill="#c3c2b7">same, Beaufort form</text>
+<rect x="450" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="472" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="494" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="516" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="538" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="560" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="582" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="604" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="626" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="648" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="670" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="692" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="714" y="232" width="20" height="20" rx="3" fill="url(#hatch-dark)" stroke="#5c5b56" stroke-width="1"/>
+<rect x="736" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="758" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="780" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="802" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="824" y="232" width="20" height="20" rx="3" fill="url(#hatch-dark)" stroke="#5c5b56" stroke-width="1"/>
+<rect x="846" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="868" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="890" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="912" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="934" y="232" width="20" height="20" rx="3" fill="#d95926"/>
+<rect x="956" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="978" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="1000" y="232" width="20" height="20" rx="3" fill="#d95926"/>
+<text x="1028" y="246" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#8a897f">14</text>
+<text x="20" y="268" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" fill="#ffffff">Two independent unknown alphabets</text>
+<rect x="450" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="472" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="494" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="516" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="538" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="560" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="582" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="604" y="254" width="20" height="20" rx="3" fill="#d95926"/>
+<rect x="626" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="648" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="670" y="254" width="20" height="20" rx="3" fill="url(#hatch-dark)" stroke="#5c5b56" stroke-width="1"/>
+<rect x="692" y="254" width="20" height="20" rx="3" fill="url(#hatch-dark)" stroke="#5c5b56" stroke-width="1"/>
+<rect x="714" y="254" width="20" height="20" rx="3" fill="#d95926"/>
+<rect x="736" y="254" width="20" height="20" rx="3" fill="url(#hatch-dark)" stroke="#5c5b56" stroke-width="1"/>
+<rect x="758" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="780" y="254" width="20" height="20" rx="3" fill="#d95926"/>
+<rect x="802" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="824" y="254" width="20" height="20" rx="3" fill="url(#hatch-dark)" stroke="#5c5b56" stroke-width="1"/>
+<rect x="846" y="254" width="20" height="20" rx="3" fill="#d95926"/>
+<rect x="868" y="254" width="20" height="20" rx="3" fill="#d95926"/>
+<rect x="890" y="254" width="20" height="20" rx="3" fill="url(#hatch-dark)" stroke="#5c5b56" stroke-width="1"/>
+<rect x="912" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="934" y="254" width="20" height="20" rx="3" fill="#d95926"/>
+<rect x="956" y="254" width="20" height="20" rx="3" fill="#d95926"/>
+<rect x="978" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="1000" y="254" width="20" height="20" rx="3" fill="#d95926"/>
+<text x="1028" y="268" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#8a897f">14</text>
+<text x="20" y="290" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" fill="#ffffff">Trifid, any cube (key length = group size)</text>
+<rect x="450.5" y="276.5" width="19" height="19" rx="3" fill="none" stroke="#5c5b56" stroke-width="1" stroke-dasharray="2 2"/>
+<rect x="472" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="494" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="516" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="538" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="560" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="582" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="604" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="626" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="648" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="670" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="692" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="714" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="736" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="758" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="780" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="802" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="824" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="846" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="868" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="890" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="912" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="934" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="956" y="276" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="978.5" y="276.5" width="19" height="19" rx="3" fill="none" stroke="#5c5b56" stroke-width="1" stroke-dasharray="2 2"/>
+<rect x="1000.5" y="276.5" width="19" height="19" rx="3" fill="none" stroke="#5c5b56" stroke-width="1" stroke-dasharray="2 2"/>
+<text x="1028" y="290" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#8a897f">12</text>
+<rect x="20" y="324" width="14" height="14" rx="3" fill="#3987e5"/>
+<text x="42" y="335.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#c3c2b7">Ruled out: no key of this length fits all 24 known letters</text>
+<rect x="20" y="344" width="14" height="14" rx="3" fill="#d95926"/>
+<text x="42" y="355.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#c3c2b7">Fits, but random text fits just as often: not evidence</text>
+<rect x="20" y="364" width="14" height="14" rx="3" fill="#383835"/>
+<text x="42" y="375.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#c3c2b7">Too few known letters to test</text>
+<rect x="20" y="384" width="14" height="14" rx="3" fill="url(#hatch-dark)" stroke="#5c5b56" stroke-width="1"/>
+<text x="42" y="395.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#c3c2b7">Search did not finish</text>
+<rect x="20.5" y="404.5" width="13" height="13" rx="3" fill="none" stroke="#5c5b56" stroke-width="1" stroke-dasharray="2 2"/>
+<text x="42" y="415.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#c3c2b7">Not tested</text>
+</svg>

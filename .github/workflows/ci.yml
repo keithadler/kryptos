@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: |
+          sudo apt-get install -y wamerican
+          python -m pip install numpy
+      - name: Build the C searchers
+        run: make all
+      - name: Planted-cipher checks
+        run: python verify.py
+      - name: Quick searches reproduce the committed results
+        run: |
+          python attacks.py periodic > /tmp/periodic.txt
+          grep -c "falsifiable survivors: none" /tmp/periodic.txt | grep -qx 8
+          python layer2.py 26 | grep -q "932 testable combos, 2 consistent"
+          python trifid.py | grep -q "SAT 0, UNSAT 299"
