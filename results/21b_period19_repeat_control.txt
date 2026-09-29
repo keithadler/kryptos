@@ -1,0 +1,4 @@
+# REPEAT=1 python3 checks/calib_c.py vig4 19 30 180   (control: random text with K4's R->P repeat)
+# 2026-09-29T21:10Z
+
+[R->P repeat planted] vig4 period 19 guess=-: random SAT 21/30, UNSAT 4, timeout 5  |  K4: QIV vig4 period 19 cribs 24: SAT  (18 nodes)

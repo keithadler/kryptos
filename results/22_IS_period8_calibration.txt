@@ -1,0 +1,4 @@
+# python3 checks/calib_c.py vig4 8 30 180 75:IS   (QIV period 8 under the IS guess)
+# 2026-09-29T21:13Z
+
+vig4 period 8 guess=75:IS: random SAT 9/30, UNSAT 20, timeout 1  |  K4: QIV vig4 period 8 cribs 26: SAT  (25 nodes)
