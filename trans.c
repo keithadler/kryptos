@@ -1,0 +1,117 @@
+/* Columnar transposition x periodic tableau substitution, exhaustive for widths 2..MAXW.
+ *
+ * sigma(i) = ciphertext position of plaintext letter i. Built by writing 97 letters row-wise into
+ * width w and reading columns in a keyed order, each column top-down or bottom-up; both sigma and
+ * its inverse are tried (we don't know which way Sanborn ran it).
+ *
+ * order A: C = T(S(P))  key index = i         (substitute, then transpose)
+ * order B: C = S(T(P))  key index = sigma(i)  (transpose, then substitute)
+ * Forced key value at crib i: vig k = y(C[sigma i]) - x(P_i);  beau k = y(C[sigma i]) + x(P_i).
+ * A candidate survives a period p if every pair of cribs sharing a key index mod p forces the same
+ * value. We print survivors with at least MINCHK such checks (random survival odds 26^-checks).
+ *
+ * usage: trans MAXW [MINCHK]
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define N 97
+static const char *K4 = "OBKRUOXOGHULBSOLIFBBWFLRVQQPRNGKSSOTWTQSJQSSEKZZWATJKLUDIAWINFBNYPVTTMZFPKWGDKZXTJCDIGKUHUAUEKCAR";
+static const char *AZ = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+static const char *KA = "KRYPTOSABCDEFGHIJLMNQUVWXZ";
+static int NC; static int cpos[32]; static char cpt[32];
+static int ai[2][26];            /* ai[alpha][letter] = index */
+static int minchk = 8;
+static long long tested = 0, survivors = 0;
+static long long hist[40];
+
+static void add_crib(int start1, const char *w) {
+    for (int k = 0; w[k]; k++) { cpos[NC] = start1 - 1 + k; cpt[NC] = w[k]; NC++; }
+}
+
+static void check(const int *sigma, int w, const int *ord, int updown, int inv) {
+    for (int fam = 0; fam < 8; fam++) {
+        int beau = fam >> 2, xa = (fam >> 1) & 1, ya = fam & 1;
+        int v[32];
+        for (int j = 0; j < NC; j++) {
+            int c = ai[ya][K4[sigma[cpos[j]]] - 'A'], p = ai[xa][cpt[j] - 'A'];
+            v[j] = beau ? (c + p) % 26 : (c - p + 26) % 26;
+        }
+        for (int orderB = 0; orderB < 2; orderB++) {
+            int kidx[32];
+            for (int j = 0; j < NC; j++) kidx[j] = orderB ? sigma[cpos[j]] : cpos[j];
+            for (int per = 1; per <= 26; per++) {
+                int seen[26], ok = 1, checks = 0;
+                memset(seen, -1, sizeof seen);
+                for (int j = 0; j < NC && ok; j++) {
+                    int r = kidx[j] % per;
+                    if (seen[r] < 0) seen[r] = v[j];
+                    else { checks++; if (seen[r] != v[j]) ok = 0; }
+                }
+                tested++;
+                if (ok) {
+                    hist[checks]++;
+                    if (checks >= minchk) {
+                        survivors++;
+                        printf("SURVIVOR w=%d ord=", w);
+                        for (int k = 0; k < w; k++) printf("%d%s", ord[k], k + 1 < w ? "," : "");
+                        printf(" updown=%x inv=%d fam=%s-P%s-C%s order=%c per=%d checks=%d\n", updown, inv,
+                               beau ? "beau" : "vig", xa ? "KA" : "AZ", ya ? "KA" : "AZ", orderB ? 'B' : 'A', per, checks);
+                    }
+                }
+            }
+        }
+    }
+}
+
+static void build_and_check(int w, const int *ord, int updown) {
+    int sigma[N], sinv[N], t = 0;
+    int rows = (N + w - 1) / w;
+    for (int k = 0; k < w; k++) {
+        int col = ord[k], up = (updown >> k) & 1;
+        int nrow = (col < N % w || N % w == 0) ? rows : rows - 1;
+        for (int rr = 0; rr < nrow; rr++) {
+            int r = up ? nrow - 1 - rr : rr;
+            sigma[r * w + col] = t++;
+        }
+    }
+    for (int i = 0; i < N; i++) sinv[sigma[i]] = i;
+    check(sigma, w, ord, updown, 0);
+    check(sinv, w, ord, updown, 1);
+}
+
+static int next_perm(int *a, int n) {
+    int i = n - 2;
+    while (i >= 0 && a[i] >= a[i + 1]) i--;
+    if (i < 0) return 0;
+    int j = n - 1;
+    while (a[j] <= a[i]) j--;
+    int t = a[i]; a[i] = a[j]; a[j] = t;
+    for (int l = i + 1, r = n - 1; l < r; l++, r--) { t = a[l]; a[l] = a[r]; a[r] = t; }
+    return 1;
+}
+
+int main(int argc, char **argv) {
+    int maxw = argc > 1 ? atoi(argv[1]) : 8;
+    if (argc > 2) minchk = atoi(argv[2]);
+    if (argc > 3) K4 = argv[3]; /* planted-ciphertext self-test */
+    add_crib(22, "EASTNORTHEAST");
+    add_crib(64, "BERLINCLOCK");
+    for (int i = 0; i < 26; i++) { ai[0][AZ[i] - 'A'] = i; ai[1][KA[i] - 'A'] = i; }
+    for (int w = 2; w <= maxw; w++) {
+        int ord[16];
+        for (int k = 0; k < w; k++) ord[k] = k;
+        long long before = survivors;
+        do {
+            build_and_check(w, ord, 0);          /* all columns top-down */
+            build_and_check(w, ord, (1 << w) - 1); /* all bottom-up (K3-style rotation) */
+            build_and_check(w, ord, 0x5555 & ((1 << w) - 1)); /* boustrophedon, odd columns up */
+        } while (next_perm(ord, w));
+        fprintf(stderr, "width %d done, survivors so far %lld (+%lld)\n", w, survivors, survivors - before);
+    }
+    fprintf(stderr, "tested %lld (perm x dir x family x order x period) combos\n", tested);
+    fprintf(stderr, "histogram of constraint counts among consistent combos:\n");
+    for (int c = 0; c < 40; c++) if (hist[c]) fprintf(stderr, "  checks=%2d: %lld\n", c, hist[c]);
+    return 0;
+}
