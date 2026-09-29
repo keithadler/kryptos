@@ -124,6 +124,28 @@ static int rot_mode(void) {
     return 0;
 }
 
+/* Orders from stdin, one per line: "label w o0,o1,...". Used for keyword-derived orders at
+ * widths too large to enumerate. */
+static int ord_mode(void) {
+    char line[4096];
+    long long n = 0;
+    while (fgets(line, sizeof line, stdin)) {
+        char label[256]; int w, pos = 0, ord[64];
+        if (sscanf(line, "%255s %d %n", label, &w, &pos) < 2 || w < 2 || w > 64) continue;
+        char *p = line + pos;
+        for (int k = 0; k < w; k++) { ord[k] = (int)strtol(p, &p, 10); if (*p == ',') p++; }
+        long long before = survivors;
+        build_and_check(w, ord, 0);
+        build_and_check(w, ord, (int)((1ULL << (w < 31 ? w : 31)) - 1));
+        build_and_check(w, ord, 0x55555555 & (int)((1ULL << (w < 31 ? w : 31)) - 1));
+        if (survivors > before) printf("  ^ keyword %s\n", label);
+        n++;
+    }
+    fprintf(stderr, "ord mode: %lld orders, tested %lld combos, survivors %lld\n", n, tested, survivors);
+    for (int c = 0; c < 40; c++) if (hist[c]) fprintf(stderr, "  checks=%2d: %lld\n", c, hist[c]);
+    return 0;
+}
+
 int main(int argc, char **argv) {
     int maxw = argc > 1 ? atoi(argv[1]) : 8;  /* or "rot" for K3-style double rotation */
     if (argc > 2) minchk = atoi(argv[2]);
@@ -132,6 +154,7 @@ int main(int argc, char **argv) {
     add_crib(64, "BERLINCLOCK");
     for (int i = 0; i < 26; i++) { ai[0][AZ[i] - 'A'] = i; ai[1][KA[i] - 'A'] = i; }
     if (argc > 1 && !strcmp(argv[1], "rot")) return rot_mode();
+    if (argc > 1 && !strcmp(argv[1], "ord")) return ord_mode();
     for (int w = 2; w <= maxw; w++) {
         int ord[16];
         for (int k = 0; k < w; k++) ord[k] = k;
