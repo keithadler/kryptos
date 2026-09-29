@@ -33,6 +33,8 @@ python3 runkey.py [THRESH]                # running key over data/running_keys/*
 cc -O3 -o dfs dfs.c && ./dfs 12 14 26 8   # every column order at widths 12-14, pruned exactly
 python3 digits.py                         # Gronsfeld / Gromark / digit keystreams
 python3 trifid.py                         # Trifid, any cube, via coordinate equalities
+python3 mixedalpha.py                     # Quagmire I/II with any of the 26! alphabets
+python3 quag34.py                         # Quagmire III/IV with unknown alphabet(s) on both sides
 ```
 
 Harness check: `kryptos.py` decrypts K1 with the KRYPTOS tableau and PALIMPSEST exactly.
@@ -52,7 +54,7 @@ Vigenère, Beaufort, variant Beaufort and Quagmire I–IV keyed with KRYPTOS: 8 
 | Autokey, ciphertext- or plaintext-keyed, every lag | **Eliminated** |
 | Running key: K1/K2/K3 plaintext, the whole left side, the tableau, each forward and reversed, every offset | **Eliminated** |
 | Hill 2×2, 3×3, 4×4 (A–Z and KA indexing, every block alignment) | **Eliminated**, except 4×4 at two alignments, where the clues give too few blocks to test |
-| Columnar transposition, every column order, columns read down / up / alternating, forward and inverse, substitution before or after, periods 1–26 | **Eliminated for widths 2–10** (4.0M column orders). Width 11 still running; see `log_trans11.txt` |
+| Columnar transposition, every column order, columns read down / up / alternating, forward and inverse, substitution before or after, periods 1–26 | **Eliminated for widths 2–11** (44M column orders, 110 billion combinations; strongest chance survivor holds 7 constraints) |
 | K3-style rotation: one rotation, or two at any pair of widths (2–96), clockwise or counter, forward and inverse, before or after a repeating key with period 1–26 | **Eliminated** (30M combinations, none past 4 constraints) |
 | Same 8 families with 20 theme-word keyed alphabets (PALIMPSEST, ABSCISSA, WELTZEITUHR, …), periodic / autokey / running key | **Eliminated**. The only multi-constraint survivors are 3-constraint progressive hits, which is chance level for ~600k tests. |
 | **Typo tolerance** (`typo.py`): periodic, progressive and running key rerun with any one clue letter wrong, or a letter added/dropped (±1–3) anywhere before or inside a clue | **Eliminated.** No survivor holds more than 2 constraints; 580 survivors vs ~516 expected by chance. Planted typo and dropped letter are both recovered (12–13 constraints). |
@@ -63,6 +65,7 @@ Vigenère, Beaufort, variant Beaufort and Quagmire I–IV keyed with KRYPTOS: 8 
 | **Digit-shift ciphers** (Gronsfeld, Gromark, any digit keystream) (`digits.py`): every forced shift must be 0–9, over AZ, KA and 209k dictionary alphabets in 5 arrangements, both directions | **Eliminated.** No alphabet gives all 24 shifts ≤ 9 (best 21/24; a real digit cipher gives 24/24). |
 | **Trifid**, any 3×3×3 cube, periods 2–24, every group offset (`trifid.py`): the clues force 72 coordinate equalities, then a solver checks whether any cube satisfies them | **Eliminated:** all 299 cases have no solution. 1,794 planted Trifids across all periods and offsets were all solved correctly. |
 | Anything built on a 5×5 square (Bifid, Playfair, two-square, four-square, ADFGX) | **Eliminated outright:** K4 uses all 26 letters, and a 5×5 square outputs only 25 |
+| **Any masking alphabet, then a repeating key** (general Quagmire I), and **a repeating key, then any substitution of the output** (general Quagmire II): all 26! alphabets at once via difference equations mod 26 (`mixedalpha.py`) | **Eliminated for periods 1–12, 14, 15, 17, 18, 21, 22, 25.** The rest (13, 16, 19, 20, 23, 24, 26) have ≤1 constraint, so the clues can't test them with a free alphabet. Planted ciphers are recovered. |
 | Playfair, Porta, and any cipher that never maps a letter to itself | **Eliminated outright:** position 74 is K→K |
 | Periodic key with period 27–48 plus one guessed word (52 theme words: WELTZEITUHR, BERLINWALL, EGYPT, COMPASSROSE, DELIVER, …) at every open position (`drag.py`) | **No signal.** 23 survivors against ~109 expected by chance, and none holding 4+ constraints. |
 
