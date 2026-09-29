@@ -1,0 +1,16 @@
+# bin/trans 8 8
+# 2026-09-29T21:09Z
+
+width 2 done, survivors so far 0 (+0)
+width 3 done, survivors so far 0 (+0)
+width 4 done, survivors so far 0 (+0)
+width 5 done, survivors so far 0 (+0)
+width 6 done, survivors so far 0 (+0)
+width 7 done, survivors so far 0 (+0)
+width 8 done, survivors so far 0 (+0)
+tested 115395072 (perm x dir x family x order x period) combos
+histogram of constraint counts among consistent combos:
+  checks= 0: 16920
+  checks= 1: 95193
+  checks= 2: 393
+  checks= 3: 88

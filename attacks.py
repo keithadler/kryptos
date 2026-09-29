@@ -143,11 +143,7 @@ def running_key_texts():
     }
     for name, t in list(texts.items()):
         texts[name + " (reversed)"] = t[::-1]
-    extra = pathlib.Path(__file__).with_name("data").joinpath("running_keys")
-    if extra.is_dir():
-        for f in sorted(extra.glob("*.txt")):
-            t = letters(f.read_text(errors="ignore"))
-            texts[f.stem] = t
+    # Large outside texts (data/running_keys/) are searched by runkey.py, which is vectorized.
     return texts
 
 

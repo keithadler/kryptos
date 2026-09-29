@@ -1,0 +1,26 @@
+# python3 runkey_mixed.py
+# 2026-09-29T21:09Z
+
+  K1                             63 letters: none
+  K2                            370 letters: none
+  K3                            336 letters: none
+  K1K2K3                        769 letters: none
+  K1 corrected                   63 letters: none
+  K2 corrected                  370 letters: none
+  K3 corrected                  337 letters: none
+  K1K2K3 corrected              770 letters: none
+  K2 pre-2006 ending            369 letters: none
+  K1K2K3 pre-2006               768 letters: none
+  carved K1-K3 ciphertext       768 letters: none
+  K1 (reversed)                  63 letters: none
+  K2 (reversed)                 370 letters: none
+  K3 (reversed)                 336 letters: none
+  K1K2K3 (reversed)             769 letters: none
+  K1 corrected (reversed)        63 letters: none
+  K2 corrected (reversed)       370 letters: none
+  K3 corrected (reversed)       337 letters: none
+  K1K2K3 corrected (reversed)   770 letters: none
+  K2 pre-2006 ending (reversed)  369 letters: none
+  K1K2K3 pre-2006 (reversed)    768 letters: none
+  carved K1-K3 ciphertext (reversed)  768 letters: none
+141152 tests, 0 survivors

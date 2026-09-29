@@ -1,0 +1,14 @@
+# python3 dictalpha.py | awk '/^SURVIVOR/{n[$2" "$3" period "$5" checks "$7]++; next} {print} END{for(k in n) print "survivors:", k, "->", n[k], "alphabets"}'
+# 2026-09-29T21:09Z
+
+208671 distinct keyed alphabets from 234454 words
+tested 54254460 (alphabet x arrangement x kind x period) combos
+survivors: W-KA vig period 26 checks 1 -> 12205 alphabets
+survivors: Q2 vig period 26 checks 1 -> 239 alphabets
+survivors: KA-W vig period 26 checks 1 -> 1550 alphabets
+survivors: Q1 vig period 26 checks 1 -> 30315 alphabets
+survivors: Q1 beau period 26 checks 1 -> 1165 alphabets
+survivors: Q2 beau period 26 checks 1 -> 2334 alphabets
+survivors: Q3 beau period 26 checks 1 -> 964 alphabets
+survivors: W-KA beau period 26 checks 1 -> 16644 alphabets
+survivors: KA-W beau period 26 checks 1 -> 2857 alphabets

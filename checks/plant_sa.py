@@ -1,5 +1,8 @@
 """Planted Quagmire ciphertext from real English (Carter vol 1), cribs overwritten in place.
 usage: plant_sa.py MODE PERIOD SEED  -> prints ciphertext on line 1, plaintext on line 2"""
+import os as _os, sys as _sys
+_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+_sys.path.insert(0, _ROOT); _os.chdir(_ROOT)   # run from anywhere; paths are repo-relative
 import random, sys, pathlib
 from runkey import load
 from kryptos import AZ, KA, CRIBS

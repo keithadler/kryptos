@@ -1,4 +1,7 @@
 """How often does RANDOM ciphertext satisfy general Quagmire III/IV at the periods K4 satisfies?"""
+import os as _os, sys as _sys
+_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+_sys.path.insert(0, _ROOT); _os.chdir(_ROOT)   # run from anywhere; paths are repo-relative
 import random, sys
 import quag34
 AZ = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"

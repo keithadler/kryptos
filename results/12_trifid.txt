@@ -1,0 +1,12 @@
+# python3 trifid.py
+# 2026-09-29T21:09Z
+
+selftest: planted Trifid period 7 -> True with 72 equalities
+per off  eqs  K4    random-ciphertext SAT rate
+  2   0   72  UNSAT 0/20
+  2   1   72  UNSAT 0/20
+  3   0   72  UNSAT 0/20
+  3   1   72  UNSAT 0/20
+  3   2   72  UNSAT 0/20
+
+K4 over all 299 (period, offset) cases: SAT 0, UNSAT 299, timeout 0  (rows above: all SAT/timeout cases, plus periods 2-3 for reference)

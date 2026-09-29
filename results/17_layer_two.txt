@@ -1,0 +1,6 @@
+# python3 layer2.py 26
+# 2026-09-29T21:09Z
+
+two-layer periodic, key lengths a <= b <= 26: 932 testable combos, 2 consistent (chance expects ~4.0)
+  constraints  1  beau KA  lengths 12 + 15
+  constraints  1  beau KA  lengths 9 + 19

@@ -1,0 +1,17 @@
+# python3 checks/calib_quag.py   (random-ciphertext SAT rates at the periods K4 satisfies)
+# original run 2026-09-29 (logs kept verbatim)
+
+Quagmire IV vig period  8: random SAT 9/30, UNSAT 11, timeout 10
+Quagmire IV vig period 13: random SAT 20/30, UNSAT 3, timeout 7
+Quagmire IV vig period 16: random SAT 24/30, UNSAT 3, timeout 3
+Quagmire IV vig period 19: random SAT 1/30, UNSAT 2, timeout 27
+Quagmire IV vig period 20: random SAT 23/30, UNSAT 1, timeout 6
+Quagmire IV vig period 23: random SAT 23/30, UNSAT 1, timeout 6
+Quagmire IV vig period 24: random SAT 27/30, UNSAT 0, timeout 3
+Quagmire IV vig period 26: random SAT 30/30, UNSAT 0, timeout 0
+Quagmire III beau period 23: random SAT 10/30, UNSAT 7, timeout 13
+Quagmire III beau period 26: random SAT 27/30, UNSAT 0, timeout 3
+python3 calib_quag.py  498.74s user 1.31s system 85% cpu 9:42.90 total
+tee out_calib_quag.txt  0.00s user 0.00s system 0% cpu 9:42.90 total
+
+[exited with code 0]

@@ -1,6 +1,17 @@
-trans
+bin/
+__pycache__/
+# generated
+data/quadgrams.bin
+data/keyword_orders.txt
+# downloaded public-domain texts (see data/SOURCES.md, fetch with checks/fetch_texts.sh)
+data/running_keys/
+# scratch run output; curated evidence lives in results/
 out_*.txt
 log_*.txt
-__pycache__/
-data/running_keys/
-data/quadgrams.bin
+# legacy in-root binaries
+/trans
+/trans_ord
+/trans_rot
+/dfs
+/quag3
+/sa

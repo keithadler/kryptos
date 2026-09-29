@@ -1,0 +1,15 @@
+# bin/quag3 (C solver): planted check, then the Python timeouts settled
+# original run 2026-09-29 (logs kept verbatim)
+
+planted QIII: 48 / 48 recovered as SAT
+QIII vig period 18: UNSAT  (5640266 nodes)
+QIII vig period 19: UNSAT  (318026 nodes)
+QIII vig period 20: UNSAT  (1 nodes)
+QIII beau period 11: UNSAT  (3488834 nodes)
+beau 13 still open after 30 min
+beau 18 still open after 30 min
+QIII beau period 19: UNSAT  (13298 nodes)
+QIII beau period 20: UNSAT  (354441290 nodes)
+QIII beau period 25: UNSAT  (1 nodes)
+
+[exited with code 0]

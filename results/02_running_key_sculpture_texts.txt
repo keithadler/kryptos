@@ -1,0 +1,18 @@
+# python3 attacks.py running
+# 2026-09-29T21:08Z
+
+== 4. Running key from sculpture and source texts (every offset)
+  K1 plaintext (63 letters): none
+  K2 plaintext (370 letters): none
+  K3 plaintext (336 letters): none
+  K1-K3 plaintext (769 letters): none
+  sculpture left side (all letters) (865 letters): none
+  sculpture left side before K4 (768 letters): none
+  tableau (right side) row-major (867 letters): none
+  K1 plaintext (reversed) (63 letters): none
+  K2 plaintext (reversed) (370 letters): none
+  K3 plaintext (reversed) (336 letters): none
+  K1-K3 plaintext (reversed) (769 letters): none
+  sculpture left side (all letters) (reversed) (865 letters): none
+  sculpture left side before K4 (reversed) (768 letters): none
+  tableau (right side) row-major (reversed) (867 letters): none

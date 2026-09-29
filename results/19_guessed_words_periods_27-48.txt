@@ -1,0 +1,58 @@
+# python3 drag.py
+# 2026-09-29T21:09Z
+
+word               place   tests  surv  expect  strongest survivors (start 1-based, family, period, constraints)
+WELTZEITUHR           43    7568     0    0.00  -
+ALEXANDERPLATZ        34    5984     0    0.00  -
+BERLINWALL            46    8096     0    0.01  -
+THEWALL               56    9856     0    1.15  -
+WALL                  64   11216     1    6.63  -
+EGYPT                 61   10712     2    4.35  -
+CAIRO                 61   10712     1    4.35  -
+GIZA                  64   11216     0    6.63  -
+PYRAMID               55    9680     0    1.15  -
+PYRAMIDS              52    9152     0    0.13  -
+SPHINX                58   10208     1    3.33  -
+NILE                  65   11376     0    6.97  -
+TOMB                  66   11568     2    7.27  -
+LANGLEY               55    9680     0    1.15  -
+VIRGINIA              52    9152     0    0.13  -
+MESSAGE               56    9856     0    1.78  -
+DELIVER               55    9680     0    1.15  -
+DELIVERING            46    8096     0    0.01  -
+DELIVERED             49    8624     0    0.04  -
+COMPASS               55    9680     0    1.15  -
+COMPASSROSE           44    7744     0    0.00  -
+BEARING               55    9680     0    1.15  -
+DEGREES               55    9680     0    1.15  -
+MINUTES               55    9680     0    1.15  -
+SECONDS               55    9680     0    1.15  -
+NORTHWEST             49    8624     0    0.04  -
+SOUTHEAST             50    8792     0    0.38  -
+SOUTHWEST             49    8624     0    0.04  -
+NORTH                 61   10712     0    4.35  -
+SOUTH                 61   10712     1    4.35  -
+WEST                  64   11216     1    6.63  -
+SHADOW                58   10208     5    3.33  -
+LIGHT                 61   10712     2    4.35  -
+BURIED                58   10208     1    3.33  -
+LAYERTHREE            47    8272     0    0.02  -
+LAYERFOUR             49    8624     0    0.04  -
+TIME                  66   11552     1    7.29  -
+HOURS                 61   10712     2    4.35  -
+WORLDCLOCK            46    8096     0    0.01  -
+CHECKPOINTCHARLIE     26    4576     0    0.00  -
+EASTBERLIN            48    8448     0    0.02  -
+WESTBERLIN            47    8272     0    0.02  -
+SANBORN               55    9680     0    1.15  -
+SCHEIDT               55    9680     0    1.15  -
+TUTANKHAMUN           44    7744     0    0.00  -
+CARTER                58   10208     1    3.33  -
+THEREFORE             51    8976     0    0.07  -
+UNDERGROUND           43    7568     0    0.00  -
+LOCATION              52    9152     0    0.13  -
+HERE                  65   11376     1    6.97  -
+THERE                 63   11056     1    4.99  -
+FROMHERE              53    9328     0    0.46  -
+
+TOTAL observed 23 vs expected by chance 108.8

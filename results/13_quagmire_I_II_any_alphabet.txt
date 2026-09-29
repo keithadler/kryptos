@@ -1,0 +1,12 @@
+# python3 mixedalpha.py
+# 2026-09-29T21:09Z
+
+Quagmire I/II with any alphabet on the unknown side, periodic key, periods 1-26
+  QI  plaintext alphabet unknown, vig, other side AZ         survivors (period, cycle constraints): [(13, 0), (16, 0), (19, 1), (23, 0), (24, 0), (26, 0)]
+  QI  plaintext alphabet unknown, vig, other side KA         survivors (period, cycle constraints): [(16, 0), (19, 1), (20, 0), (23, 0), (24, 0), (26, 0)]
+  QI  plaintext alphabet unknown, beau, other side AZ        survivors (period, cycle constraints): [(13, 0), (16, 0), (19, 1), (23, 0), (24, 0), (26, 0)]
+  QI  plaintext alphabet unknown, beau, other side KA        survivors (period, cycle constraints): [(16, 0), (19, 1), (20, 0), (23, 0), (24, 0), (26, 0)]
+  QII ciphertext alphabet unknown, vig, other side AZ        survivors (period, cycle constraints): [(16, 0), (19, 1), (20, 0), (23, 0), (24, 0), (26, 0)]
+  QII ciphertext alphabet unknown, vig, other side KA        survivors (period, cycle constraints): [(16, 0), (19, 1), (20, 0), (24, 0), (26, 0)]
+  QII ciphertext alphabet unknown, beau, other side AZ       survivors (period, cycle constraints): [(16, 0), (19, 1), (20, 0), (23, 0), (24, 0), (26, 0)]
+  QII ciphertext alphabet unknown, beau, other side KA       survivors (period, cycle constraints): [(16, 0), (19, 1), (20, 0), (24, 0), (26, 0)]

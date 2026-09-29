@@ -1,0 +1,11 @@
+# bin/dfs 12 12 26 8; bin/dfs 13 13 26 8; bin/dfs 14 14 26 8
+# original run 2026-09-28/29 (logs kept verbatim)
+
+width 12: 2882229900 nodes, survivors 0   (from the run's terminal output)
+width 13: 21214616500 nodes, survivors 0
+width 14: 276350719336 nodes, survivors 3
+
+## width-14 survivors (stdout)
+SURVIVOR w=14 dir=0 fam=vig-PKA-CKA order=B per=25 checks=8 ord=13,3,8,7,9,4,12,11,1,5,2,0,6,10
+SURVIVOR w=14 dir=0 fam=vig-PKA-CKA order=B per=25 checks=8 ord=13,3,8,7,9,4,12,11,1,5,2,0,10,6
+SURVIVOR w=14 dir=0 fam=vig-PKA-CKA order=B per=25 checks=8 ord=13,3,8,7,9,4,12,11,6,5,2,0,1,10

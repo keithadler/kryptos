@@ -1,0 +1,9 @@
+# bin/trans rot 8
+# 2026-09-29T21:09Z
+
+rotation mode: tested 30193280 combos, survivors 0
+  checks= 0: 29016
+  checks= 1: 25040
+  checks= 2: 118
+  checks= 3: 44
+  checks= 4: 1

@@ -1,0 +1,5 @@
+# python3 checks/calib_c.py vig4 19 30 180 [61:THE]   (QIV period 19, C solver)
+# original run 2026-09-29 (logs kept verbatim)
+
+vig4 period 19 guess=61:THE: random SAT 0/30, UNSAT 10, timeout 20  |  K4: QIV vig4 period 19 cribs 27: SAT  (16 nodes)
+vig4 period 19 guess=-: random SAT 0/30, UNSAT 11, timeout 19  |  K4: QIV vig4 period 19 cribs 24: SAT  (18 nodes)

@@ -1,0 +1,47 @@
+# KRYPTOS_GUESS=... python3 guess_run.py   (guess: 75_IS)
+# original run 2026-09-29 (logs kept verbatim)
+
+[HYPOTHESIS MODE] guessed plaintext 75:IS (2 letters) added to the 24 confirmed
+cribs: 24 confirmed + 2 guessed
+
+== Quagmire I/II, any alphabet on one side (periods open under confirmed cribs)
+  QI  vig  AZ: still open at [(19, 1), (24, 0)]
+  QI  vig  KA: still open at [(19, 1), (20, 0), (23, 0), (24, 0)]
+  QI  beau AZ: still open at [(19, 1), (24, 0)]
+  QI  beau KA: still open at [(19, 1), (20, 0), (23, 0), (24, 0)]
+  QII vig  AZ: still open at [(16, 0), (19, 1), (20, 0), (23, 0), (24, 0)]
+  QII vig  KA: still open at [(16, 0), (19, 1), (20, 0), (24, 0)]
+  QII beau AZ: still open at [(16, 0), (19, 1), (20, 0), (23, 0), (24, 0)]
+  QII beau KA: still open at [(16, 0), (19, 1), (20, 0), (24, 0)]
+
+== general Quagmire III Beaufort / IV (periods open under confirmed cribs)
+  QIII beau period 13: timeout   (random 0/12 SAT, 4 timeout)
+  QIII beau period 18: timeout   (random 4/12 SAT, 3 timeout)
+  QIII beau period 23: SAT   (random 6/12 SAT, 3 timeout)
+  QIII beau period 26: timeout   (random 0/12 SAT, 8 timeout)
+  QIV vig period  8: SAT   (random 1/12 SAT, 8 timeout)
+  QIV vig period 13: timeout   (random 0/12 SAT, 7 timeout)
+  QIV vig period 16: SAT   (random 7/12 SAT, 4 timeout)
+  QIV vig period 19: SAT   (random 1/12 SAT, 9 timeout)
+  QIV vig period 20: SAT   (random 9/12 SAT, 3 timeout)
+  QIV vig period 23: SAT   (random 8/12 SAT, 4 timeout)
+  QIV vig period 24: SAT   (random 8/12 SAT, 4 timeout)
+  QIV vig period 26: timeout   (random 0/12 SAT, 10 timeout)
+
+== Hill 4x4 and periodic 27-48
+  AZ n=4 align=0: 5 blocks -> ELIMINATED
+  AZ n=4 align=1: 5 blocks -> ELIMINATED
+  AZ n=4 align=2: 5 blocks -> ELIMINATED
+  AZ n=4 align=3: 5 blocks -> ELIMINATED
+  KA n=4 align=0: 5 blocks -> ELIMINATED
+  KA n=4 align=1: 5 blocks -> ELIMINATED
+  KA n=4 align=2: 5 blocks -> ELIMINATED
+  KA n=4 align=3: 5 blocks -> ELIMINATED
+  periodic 27-48 vig  P:AZ C:AZ: survivors (period, constraints) none
+  periodic 27-48 vig  P:AZ C:KA: survivors (period, constraints) none
+  periodic 27-48 vig  P:KA C:AZ: survivors (period, constraints) none
+  periodic 27-48 vig  P:KA C:KA: survivors (period, constraints) none
+  periodic 27-48 beau P:AZ C:AZ: survivors (period, constraints) none
+  periodic 27-48 beau P:AZ C:KA: survivors (period, constraints) none
+  periodic 27-48 beau P:KA C:AZ: survivors (period, constraints) none
+  periodic 27-48 beau P:KA C:KA: survivors (period, constraints) none

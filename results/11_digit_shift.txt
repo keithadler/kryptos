@@ -1,0 +1,14 @@
+# python3 digits.py
+# 2026-09-29T21:09Z
+
+x=AZ y=W   C=P+d: 0 alphabets pass all 24 (best any alphabet: 18/24)
+x=AZ y=W   C=P-d: 0 alphabets pass all 24 (best any alphabet: 13/24)
+x=KA y=W   C=P+d: 0 alphabets pass all 24 (best any alphabet: 19/24)
+x=KA y=W   C=P-d: 0 alphabets pass all 24 (best any alphabet: 16/24)
+x=W y=AZ   C=P+d: 0 alphabets pass all 24 (best any alphabet: 18/24)
+x=W y=AZ   C=P-d: 0 alphabets pass all 24 (best any alphabet: 17/24)
+x=W y=KA   C=P+d: 0 alphabets pass all 24 (best any alphabet: 17/24)
+x=W y=KA   C=P-d: 0 alphabets pass all 24 (best any alphabet: 16/24)
+x=W y=W    C=P+d: 0 alphabets pass all 24 (best any alphabet: 21/24)
+x=W y=W    C=P-d: 0 alphabets pass all 24 (best any alphabet: 19/24)
+digit-filter survivors: 0

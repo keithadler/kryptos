@@ -141,15 +141,19 @@ def main():
     rnd = random.Random(1)
     randoms = ["".join(rnd.choice(AZ) for _ in range(97)) for _ in range(20)]
     print(f"{'per':>3} {'off':>3} {'eqs':>4}  K4    random-ciphertext SAT rate")
+    tally = {True: 0, False: 0, None: 0}
     for per in range(2, 25):
         for off in range(per):
             sat, n = solve(equalities(K4, per, off))
+            tally[sat] += 1
             rs = [solve(equalities(r, per, off))[0] for r in randoms]
             rate = f"{sum(1 for s in rs if s)}/{sum(1 for s in rs if s is not None)}"
             k4 = {True: "SAT", False: "UNSAT", None: "?"}[sat]
             if sat is not False or per <= 3:
                 print(f"{per:3} {off:3} {n:4}  {k4:5} {rate}")
         sys.stdout.flush()
+    print(f"\nK4 over all {sum(tally.values())} (period, offset) cases: SAT {tally[True]}, UNSAT {tally[False]}, "
+          f"timeout {tally[None]}  (rows above: all SAT/timeout cases, plus periods 2-3 for reference)")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,9 @@
+# bin/trans ord 8 < data/keyword_orders.txt
+# 2026-09-29T21:09Z
+
+ord mode: 114936 orders, tested 286880256 combos, survivors 0
+  checks= 0: 8792
+  checks= 1: 214942
+  checks= 2: 454
+  checks= 3: 402
+  checks= 4: 1

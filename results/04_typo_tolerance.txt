@@ -1,0 +1,16 @@
+# python3 typo.py
+# 2026-09-29T21:08Z
+
+periodic/progressive survivors: 580 observed vs 515.8 expected by chance
+survivors holding 5+ constraints: 0
+top by constraint count:
+   (2, 'shift@65-2', 'beau-PAZ-CKA', 'progressive p=25 s=23')
+   (2, 'shift@65-2', 'beau-PAZ-CKA', 'progressive p=25 s=10')
+   (1, 'shift@74-3', 'beau-PAZ-CKA', 'progressive p=26 s=9')
+   (1, 'shift@74-3', 'beau-PAZ-CKA', 'progressive p=26 s=8')
+   (1, 'shift@74-3', 'beau-PAZ-CKA', 'progressive p=26 s=7')
+   (1, 'shift@74-3', 'beau-PAZ-CKA', 'progressive p=26 s=6')
+   (1, 'shift@74-3', 'beau-PAZ-CKA', 'progressive p=26 s=5')
+   (1, 'shift@74-3', 'beau-PAZ-CKA', 'progressive p=26 s=4')
+   (1, 'shift@74-3', 'beau-PAZ-CKA', 'progressive p=26 s=3')
+   (1, 'shift@74-3', 'beau-PAZ-CKA', 'progressive p=26 s=25')

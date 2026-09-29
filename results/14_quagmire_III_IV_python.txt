@@ -1,0 +1,91 @@
+# python3 quag34.py   (general Quagmire III/IV, Python solver, 2M-node limit)
+# original run 2026-09-28 (logs kept verbatim)
+
+plant QIII vig p7: (True, 24)
+plant QIII beau p7: (True, 24)
+plant QIV vig p5: (True, 24)
+== general Quagmire III vig
+  period  1: UNSAT   slack   3  nodes 1
+  period  2: UNSAT   slack   2  nodes 1
+  period  3: UNSAT   slack   1  nodes 1
+  period  4: UNSAT   slack   0  nodes 26
+  period  5: UNSAT   slack  -1  nodes 26
+  period  6: UNSAT   slack  -2  nodes 1
+  period  7: UNSAT   slack  -3  nodes 1
+  period  8: UNSAT   slack  -4  nodes 26
+  period  9: UNSAT   slack  -5  nodes 1
+  period 10: UNSAT   slack  -6  nodes 26
+  period 11: UNSAT   slack  -7  nodes 279386
+  period 12: UNSAT   slack  -8  nodes 602
+  period 13: UNSAT   slack  -9  nodes 602
+  period 14: UNSAT   slack  -9  nodes 1
+  period 15: UNSAT   slack -11  nodes 626
+  period 16: UNSAT   slack -12  nodes 26
+  period 17: UNSAT   slack -13  nodes 1
+  period 18: timeout slack -13  nodes 2000001
+  period 19: timeout slack -11  nodes 2000001
+  period 20: timeout slack  -9  nodes 2000001
+  period 21: UNSAT   slack  -9  nodes 1
+  period 22: UNSAT   slack -11  nodes 26
+  period 23: UNSAT   slack -13  nodes 13298
+  period 24: UNSAT   slack -15  nodes 578
+  period 25: UNSAT   slack -17  nodes 13298
+  period 26: UNSAT   slack -19  nodes 26
+== general Quagmire III beau
+  period  1: UNSAT   slack   3  nodes 1
+  period  2: UNSAT   slack   2  nodes 1
+  period  3: UNSAT   slack   1  nodes 1
+  period  4: UNSAT   slack   0  nodes 26
+  period  5: UNSAT   slack  -1  nodes 26
+  period  6: UNSAT   slack  -2  nodes 1
+  period  7: UNSAT   slack  -3  nodes 1
+  period  8: UNSAT   slack  -4  nodes 10682
+  period  9: UNSAT   slack  -5  nodes 1
+  period 10: UNSAT   slack  -6  nodes 26
+  period 11: timeout slack  -7  nodes 2000001
+  period 12: UNSAT   slack  -8  nodes 1086614
+  period 13: timeout slack  -9  nodes 2000001
+  period 14: UNSAT   slack  -9  nodes 1
+  period 15: UNSAT   slack -11  nodes 11258
+  period 16: UNSAT   slack -12  nodes 11642
+  period 17: UNSAT   slack -13  nodes 178321
+  period 18: timeout slack -13  nodes 2000001
+  period 19: timeout slack -11  nodes 2000001
+  period 20: timeout slack  -9  nodes 2000001
+  period 21: UNSAT   slack  -9  nodes 1
+  period 22: UNSAT   slack -11  nodes 12722
+  period 23: SAT     slack -13  nodes 14
+  period 24: UNSAT   slack -15  nodes 26
+  period 25: timeout slack -17  nodes 2000001
+  period 26: SAT     slack -19  nodes 20
+== general Quagmire IV vig
+  period  1: UNSAT   slack  -2  nodes 1
+  period  2: UNSAT   slack  -3  nodes 1
+  period  3: UNSAT   slack  -4  nodes 1
+  period  4: UNSAT   slack  -5  nodes 12746
+  period  5: UNSAT   slack  -6  nodes 1
+  period  6: UNSAT   slack  -7  nodes 237002
+  period  7: UNSAT   slack  -8  nodes 256706
+  period  8: SAT     slack  -9  nodes 10
+  period  9: UNSAT   slack -10  nodes 1
+  period 10: UNSAT   slack -11  nodes 1
+  period 11: timeout slack -12  nodes 2000001
+  period 12: timeout slack -13  nodes 2000001
+  period 13: SAT     slack -14  nodes 15
+  period 14: timeout slack -14  nodes 2000001
+  period 15: UNSAT   slack -16  nodes 626
+  period 16: SAT     slack -17  nodes 18
+  period 17: UNSAT   slack -18  nodes 26
+  period 18: timeout slack -18  nodes 2000001
+  period 19: SAT     slack -16  nodes 18
+  period 20: SAT     slack -14  nodes 15
+  period 21: timeout slack -14  nodes 2000001
+  period 22: UNSAT   slack -16  nodes 626
+  period 23: SAT     slack -18  nodes 19
+  period 24: SAT     slack -20  nodes 21
+  period 25: UNSAT   slack -22  nodes 1
+  period 26: SAT     slack -24  nodes 25
+python3 quag34.py  1811.29s user 7.39s system 61% cpu 49:10.77 total
+tee out_quag34.txt  0.00s user 0.01s system 0% cpu 49:10.75 total
+
+[exited with code 0]

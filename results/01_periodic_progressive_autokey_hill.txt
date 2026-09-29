@@ -1,0 +1,73 @@
+# python3 attacks.py periodic progressive autokey hill
+# 2026-09-29T21:08Z
+
+== 1. Periodic key, position-aligned (Vigenere/Beaufort/Quagmire I-IV)
+  vig  P:AZ C:AZ  falsifiable survivors: none   (cribs stop constraining at period 27)
+  vig  P:AZ C:KA  falsifiable survivors: none   (cribs stop constraining at period 27)
+  vig  P:KA C:AZ  falsifiable survivors: none   (cribs stop constraining at period 27)
+  vig  P:KA C:KA  falsifiable survivors: none   (cribs stop constraining at period 27)
+  beau P:AZ C:AZ  falsifiable survivors: none   (cribs stop constraining at period 27)
+  beau P:AZ C:KA  falsifiable survivors: none   (cribs stop constraining at period 27)
+  beau P:KA C:AZ  falsifiable survivors: none   (cribs stop constraining at period 27)
+  beau P:KA C:KA  falsifiable survivors: none   (cribs stop constraining at period 27)
+== 2. Progressive periodic key  k_i = K[i mod p] + s*floor(i/p)
+  vig  P:AZ C:AZ  survivors: none
+  vig  P:AZ C:KA  survivors: [(26, 4, 1), (26, 17, 1)]
+  vig  P:KA C:AZ  survivors: [(26, 8, 1), (26, 21, 1)]
+  vig  P:KA C:KA  survivors: none
+  beau P:AZ C:AZ  survivors: none
+  beau P:AZ C:KA  survivors: [(26, 10, 1), (26, 23, 1)]
+  beau P:KA C:AZ  survivors: [(26, 10, 1), (26, 23, 1)]
+  beau P:KA C:KA  survivors: none
+== 3. Autokey (key = earlier ciphertext or plaintext letter at lag L)
+  vig  P:AZ C:AZ key=ct via x-alphabet  survivors: none
+  vig  P:AZ C:AZ key=ct via y-alphabet  survivors: none
+  vig  P:AZ C:AZ key=pt via x-alphabet  survivors: none
+  vig  P:AZ C:AZ key=pt via y-alphabet  survivors: none
+  vig  P:AZ C:KA key=ct via x-alphabet  survivors: none
+  vig  P:AZ C:KA key=ct via y-alphabet  survivors: none
+  vig  P:AZ C:KA key=pt via x-alphabet  survivors: none
+  vig  P:AZ C:KA key=pt via y-alphabet  survivors: none
+  vig  P:KA C:AZ key=ct via x-alphabet  survivors: none
+  vig  P:KA C:AZ key=ct via y-alphabet  survivors: none
+  vig  P:KA C:AZ key=pt via x-alphabet  survivors: none
+  vig  P:KA C:AZ key=pt via y-alphabet  survivors: none
+  vig  P:KA C:KA key=ct via x-alphabet  survivors: none
+  vig  P:KA C:KA key=ct via y-alphabet  survivors: none
+  vig  P:KA C:KA key=pt via x-alphabet  survivors: none
+  vig  P:KA C:KA key=pt via y-alphabet  survivors: none
+  beau P:AZ C:AZ key=ct via x-alphabet  survivors: none
+  beau P:AZ C:AZ key=ct via y-alphabet  survivors: none
+  beau P:AZ C:AZ key=pt via x-alphabet  survivors: none
+  beau P:AZ C:AZ key=pt via y-alphabet  survivors: none
+  beau P:AZ C:KA key=ct via x-alphabet  survivors: none
+  beau P:AZ C:KA key=ct via y-alphabet  survivors: none
+  beau P:AZ C:KA key=pt via x-alphabet  survivors: none
+  beau P:AZ C:KA key=pt via y-alphabet  survivors: none
+  beau P:KA C:AZ key=ct via x-alphabet  survivors: none
+  beau P:KA C:AZ key=ct via y-alphabet  survivors: none
+  beau P:KA C:AZ key=pt via x-alphabet  survivors: none
+  beau P:KA C:AZ key=pt via y-alphabet  survivors: none
+  beau P:KA C:KA key=ct via x-alphabet  survivors: none
+  beau P:KA C:KA key=ct via y-alphabet  survivors: none
+  beau P:KA C:KA key=pt via x-alphabet  survivors: none
+  beau P:KA C:KA key=pt via y-alphabet  survivors: none
+== 5. Hill cipher n=2..4, every block alignment, AZ and KA indexing
+  AZ n=2 align=0: 11 blocks -> ELIMINATED
+  AZ n=2 align=1: 11 blocks -> ELIMINATED
+  AZ n=3 align=0: 7 blocks -> ELIMINATED
+  AZ n=3 align=1: 7 blocks -> ELIMINATED
+  AZ n=3 align=2: 6 blocks -> ELIMINATED
+  AZ n=4 align=0: only 4 crib blocks, cannot falsify
+  AZ n=4 align=1: 5 blocks -> ELIMINATED
+  AZ n=4 align=2: 5 blocks -> ELIMINATED
+  AZ n=4 align=3: only 4 crib blocks, cannot falsify
+  KA n=2 align=0: 11 blocks -> ELIMINATED
+  KA n=2 align=1: 11 blocks -> ELIMINATED
+  KA n=3 align=0: 7 blocks -> ELIMINATED
+  KA n=3 align=1: 7 blocks -> ELIMINATED
+  KA n=3 align=2: 6 blocks -> ELIMINATED
+  KA n=4 align=0: only 4 crib blocks, cannot falsify
+  KA n=4 align=1: 5 blocks -> ELIMINATED
+  KA n=4 align=2: 5 blocks -> ELIMINATED
+  KA n=4 align=3: only 4 crib blocks, cannot falsify

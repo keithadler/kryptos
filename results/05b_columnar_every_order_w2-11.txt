@@ -1,0 +1,23 @@
+# bin/trans 11 8   (every column order, widths 2-11; stdout had no survivors, stderr below)
+# original run 2026-09-28 (logs kept verbatim)
+
+width 2 done, survivors so far 0 (+0)
+width 3 done, survivors so far 0 (+0)
+width 4 done, survivors so far 0 (+0)
+width 5 done, survivors so far 0 (+0)
+width 6 done, survivors so far 0 (+0)
+width 7 done, survivors so far 0 (+0)
+width 8 done, survivors so far 0 (+0)
+width 9 done, survivors so far 0 (+0)
+width 10 done, survivors so far 0 (+0)
+width 11 done, survivors so far 0 (+0)
+tested 109710961152 (perm x dir x family x order x period) combos
+histogram of constraint counts among consistent combos:
+  checks= 0: 9728152
+  checks= 1: 78491683
+  checks= 2: 236085
+  checks= 3: 86244
+  checks= 4: 3874
+  checks= 5: 122
+  checks= 6: 2
+  checks= 7: 2

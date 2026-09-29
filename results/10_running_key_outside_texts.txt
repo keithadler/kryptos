@@ -1,0 +1,23 @@
+# python3 runkey.py
+# 2026-09-29T21:09Z
+
+bill_of_rights                          2276 letters  best  6/24  (vig-PKA-CAZ key via y offset 10)
+bill_of_rights (reversed)               2276 letters  best  6/24  (vig-PAZ-CKA key via y offset 437)
+carter_vol1                           287513 letters  best  8/24  (vig-PAZ-CKA key via x offset 275550)
+carter_vol1 (reversed)                287513 letters  best  9/24  (vig-PKA-CAZ key via y offset 236672)
+carter_vol2                           351185 letters  best  9/24  (vig-PKA-CAZ key via y offset 203983)
+carter_vol2 (reversed)                351185 letters  best  8/24  (vig-PKA-CAZ key via x offset 254812)
+carter_vol3                           262247 letters  best  8/24  (vig-PKA-CAZ key via y offset 14409)
+carter_vol3 (reversed)                262247 letters  best  9/24  (vig-PKA-CAZ key via y offset 225630)
+constitution                           22328 letters  best  7/24  (vig-PAZ-CKA key via x offset 5523)
+constitution (reversed)                22328 letters  best  8/24  (vig-PKA-CAZ key via y offset 4046)
+declaration                             8448 letters  best  7/24  (vig-PKA-CAZ key via y offset 3039)
+declaration (reversed)                  8448 letters  best  7/24  (beau-PAZ-CKA key via x offset 2645)
+kjv_bible                            3225906 letters  best  9/24  (vig-PKA-CAZ key via y offset 723557)
+kjv_bible (reversed)                 3225906 letters  best  9/24  (vig-PKA-CAZ key via x offset 450400)
+poe_works_vol1                        409843 letters  best  9/24  (vig-PKA-CAZ key via y offset 374516)
+poe_works_vol1 (reversed)             409843 letters  best  8/24  (vig-PKA-CAZ key via x offset 51069)
+tutankhamen_1923                      101923 letters  best  9/24  (beau-PKA-CKA key via x offset 63431)
+tutankhamen_1923 (reversed)           101923 letters  best  8/24  (vig-PKA-CAZ key via y offset 18526)
+
+1.49e+08 offset tests; threshold 12/24
