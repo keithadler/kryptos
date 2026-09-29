@@ -92,13 +92,46 @@ static int next_perm(int *a, int n) {
     return 1;
 }
 
+/* One rotation step: write row-wise in width w, read columns (cw: left->right, each bottom->top;
+ * ccw: right->left, each top->bottom). Short last row handled like the columnar case. */
+static void rotation(int w, int ccw, int *sig) {
+    int rows = (N + w - 1) / w, t = 0;
+    for (int k = 0; k < w; k++) {
+        int col = ccw ? w - 1 - k : k;
+        int nrow = (col < N % w || N % w == 0) ? rows : rows - 1;
+        for (int rr = 0; rr < nrow; rr++) {
+            int r = ccw ? rr : nrow - 1 - rr;
+            sig[r * w + col] = t++;
+        }
+    }
+}
+
+static int rot_mode(void) {
+    int s1[N], s2[N], sig[N], sinv[N], ord[2];
+    for (int w1 = 2; w1 < N; w1++)
+        for (int w2 = 1; w2 < N; w2++)       /* w2 == 1: single rotation */
+            for (int r = 0; r < 4; r++) {
+                rotation(w1, r & 1, s1);
+                if (w2 == 1) { if (r & 2) continue; for (int i = 0; i < N; i++) sig[i] = s1[i]; }
+                else { rotation(w2, (r >> 1) & 1, s2); for (int i = 0; i < N; i++) sig[i] = s2[s1[i]]; }
+                for (int i = 0; i < N; i++) sinv[sig[i]] = i;
+                ord[0] = w1; ord[1] = w2;
+                check(sig, 2, ord, r, 0);
+                check(sinv, 2, ord, r, 1);
+            }
+    fprintf(stderr, "rotation mode: tested %lld combos, survivors %lld\n", tested, survivors);
+    for (int c = 0; c < 40; c++) if (hist[c]) fprintf(stderr, "  checks=%2d: %lld\n", c, hist[c]);
+    return 0;
+}
+
 int main(int argc, char **argv) {
-    int maxw = argc > 1 ? atoi(argv[1]) : 8;
+    int maxw = argc > 1 ? atoi(argv[1]) : 8;  /* or "rot" for K3-style double rotation */
     if (argc > 2) minchk = atoi(argv[2]);
     if (argc > 3) K4 = argv[3]; /* planted-ciphertext self-test */
     add_crib(22, "EASTNORTHEAST");
     add_crib(64, "BERLINCLOCK");
     for (int i = 0; i < 26; i++) { ai[0][AZ[i] - 'A'] = i; ai[1][KA[i] - 'A'] = i; }
+    if (argc > 1 && !strcmp(argv[1], "rot")) return rot_mode();
     for (int w = 2; w <= maxw; w++) {
         int ord[16];
         for (int k = 0; k < w; k++) ord[k] = k;
