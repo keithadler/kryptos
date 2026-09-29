@@ -29,6 +29,7 @@ python3 drag.py [WORDS...]                # guessed words at every open position
 python3 typo.py                           # reruns allowing one wrong clue letter or an added/dropped letter
 python3 keywords.py | ./trans ord 8       # keyword-ordered columnar, widths 12-30
 python3 dictalpha.py                      # every dictionary word as the keyed alphabet
+python3 runkey.py [THRESH]                # running key over data/running_keys/*.txt, with tolerance
 ```
 
 Harness check: `kryptos.py` decrypts K1 with the KRYPTOS tableau and PALIMPSEST exactly.
@@ -54,6 +55,7 @@ Vigenère, Beaufort, variant Beaufort and Quagmire I–IV keyed with KRYPTOS: 8 
 | **Typo tolerance** (`typo.py`): periodic, progressive and running key rerun with any one clue letter wrong, or a letter added/dropped (±1–3) anywhere before or inside a clue | **Eliminated.** No survivor holds more than 2 constraints; 580 survivors vs ~516 expected by chance. Planted typo and dropped letter are both recovered (12–13 constraints). |
 | Keyword-ordered columnar, widths 12–30: 115k dictionary words, proper names and theme phrases, both ordering conventions, 3 read directions, forward and inverse, substitution before or after, periods 1–26 | **Eliminated** (287M combinations, none past 4 constraints). Planted PALIMPSESTABSCISSA order recovered with 17 constraints. |
 | Periodic key 1–26 with any dictionary word as the keyed alphabet (209k distinct alphabets; Quagmire I/II/III, KA→word, word→KA; Vigenère and Beaufort) (`dictalpha.py`) | **Eliminated.** All 68k survivors sit at period 26 on the single available constraint, which is chance level. Planted Quagmire III recovered with 16 constraints. |
+| **Running key from outside texts, with tolerance** (`runkey.py`): Carter's *The Tomb of Tut-ankh-Amen* vols 1–3 (archive.org OCR; vol 1 contains K3's source passage), the King James Bible, the Declaration, Constitution, Bill of Rights, Poe's *Works* vol 1 (*The Gold-Bug*), and the 1923 Gutenberg Tutankhamen account. Each forward and reversed, 8 families, key read via either alphabet | **No signal.** 149M offsets tested; the best anywhere is 9/24 matching key letters, while chance reaches 9 about 36 times at this scale and 12 is the threshold. A planted Carter key with 2 typos scores 22/24. (Planting also showed English can reach 12/24 against English by shared phrasing, so any 12+ hit needs inspection.) |
 | Playfair, Porta, and any cipher that never maps a letter to itself | **Eliminated outright:** position 74 is K→K |
 | Periodic key with period 27–48 plus one guessed word (52 theme words: WELTZEITUHR, BERLINWALL, EGYPT, COMPASSROSE, DELIVER, …) at every open position (`drag.py`) | **No signal.** 23 survivors against ~109 expected by chance, and none holding 4+ constraints. |
 
@@ -72,8 +74,7 @@ with an advancing offset each cycle. The Kurfürstendamm set-theory clock (24 la
 the same way. If the clock drives the key, it isn't through a simple 24- or 12-cycle.
 
 ## Not yet tested
-- Running key from Howard Carter's *The Tomb of Tut-ankh-Amen* (K3's source). Drop texts into
-  `data/running_keys/*.txt`; `attacks.py running` picks them up.
+- More running-key texts: drop them into `data/running_keys/*.txt` and run `python3 runkey.py`.
 - Transposition searches with typo tolerance; keyed *double* columnar; routes other than columns and rotations.
 - Bifid / four-square / other fractionating ciphers (four-square can map a letter to itself, so it survives the K→K test).
 - Non-repeating keys from the Weltzeituhr's 146 city names read in drum order (needs the per-face list).

@@ -2,3 +2,4 @@ trans
 out_*.txt
 log_*.txt
 __pycache__/
+data/running_keys/
