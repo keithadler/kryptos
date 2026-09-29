@@ -1,31 +1,33 @@
-/* General Quagmire III (one unknown alphabet A on both sides, periodic key) vs the cribs, exact.
- * C port of quag34.py's solver for the periods Python timed out on.
- *   vig:  A(C) - A(P) = k_r      beau: A(C) + A(P) = k_r
- * Variables: A(letter) for letters in the cribs (distinct values), k_r for residues.
- * Backtracking with propagation (two known -> third forced). A(first letter) = 0 by shift symmetry.
- * usage: quag3 KIND(vig|beau) PERIOD [ciphertext]
+/* General Quagmire III / IV vs the cribs, exact. C port of quag34.py's solver.
+ *   QIII (one unknown alphabet A):  vig A(C) - A(P) = k_r     beau A(C) + A(P) = k_r
+ *   QIV  (plaintext alphabet X, ciphertext alphabet Y, both unknown):  vig Y(C) - X(P) = k_r
+ * Variables: alphabet positions of crib letters (distinct within an alphabet), key residues.
+ * Backtracking with propagation (two known -> third forced). One letter per alphabet pinned to 0.
+ * usage: quag3 KIND(vig|beau|vig4) PERIOD [ciphertext]      env KGUESS="61:THE" adds guessed cribs
  */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 static const char *K4 = "OBKRUOXOGHULBSOLIFBBWFLRVQQPRNGKSSOTWTQSJQSSEKZZWATJKLUDIAWINFBNYPVTTMZFPKWGDKZXTJCDIGKUHUAUEKCAR";
-#define NC 24
-static int cp[NC], cl[NC], pl[NC];   /* crib pos, cipher letter, plain letter */
-static int BEAU, PER;
-/* variables 0..25 letters, 26.. residues */
-static int val[26 + 64], isset[26 + 64], usedv[26];
-static int trail[200], tp;
+#define MAXC 97
+static int NC, cp[MAXC], cl[MAXC], pl[MAXC];   /* crib pos, cipher var, plain var */
+static int BEAU, PER, TWO;
+/* variables: 0..25 plaintext-side letters, 26..51 ciphertext-side letters (QIV; QIII uses 0..25
+ * for both), KB.. residues */
+#define KB 52
+static int val[KB + 128], isset[KB + 128], usedv[2][26];
+static int trail[400], tp;
 static long long nodes;
 
 static int setv(int v, int x) {
     if (isset[v]) return val[v] == x;
-    if (v < 26) { if (usedv[x]) return 0; usedv[x] = 1; }
+    if (v < KB) { int a = v >= 26; if (usedv[a][x]) return 0; usedv[a][x] = 1; }
     val[v] = x; isset[v] = 1; trail[tp++] = v;
     return 1;
 }
 static void undo(int t0) {
-    while (tp > t0) { int v = trail[--tp]; if (v < 26) usedv[val[v]] = 0; isset[v] = 0; }
+    while (tp > t0) { int v = trail[--tp]; if (v < KB) usedv[v >= 26][val[v]] = 0; isset[v] = 0; }
 }
 /* propagate all constraints to fixpoint */
 static int propagate(void) {
@@ -33,7 +35,7 @@ static int propagate(void) {
     while (changed) {
         changed = 0;
         for (int j = 0; j < NC; j++) {
-            int y = cl[j], x = pl[j], k = 26 + cp[j] % PER;
+            int y = cl[j], x = pl[j], k = KB + cp[j] % PER;
             int sy = isset[y], sx = isset[x], sk = isset[k];
             if (sy + sx + sk == 3) {
                 int lhs = BEAU ? (val[y] + val[x]) % 26 : (val[y] - val[x] + 26) % 26;
@@ -58,13 +60,13 @@ static int propagate(void) {
 }
 static int pick(void) {
     int best = -1, bs = -1;
-    for (int v = 0; v < 26 + PER; v++) {
+    for (int v = 0; v < KB + PER; v++) {
         int present = 0;
-        for (int j = 0; j < NC; j++) if (cl[j] == v || pl[j] == v || 26 + cp[j] % PER == v) { present = 1; break; }
+        for (int j = 0; j < NC; j++) if (cl[j] == v || pl[j] == v || KB + cp[j] % PER == v) { present = 1; break; }
         if (!present || isset[v]) continue;
         int s = 0;
         for (int j = 0; j < NC; j++) {
-            int y = cl[j], x = pl[j], k = 26 + cp[j] % PER;
+            int y = cl[j], x = pl[j], k = KB + cp[j] % PER;
             if (y == v || x == v || k == v) s += isset[y] + isset[x] + isset[k];
         }
         if (s > bs) { bs = s; best = v; }
@@ -82,14 +84,22 @@ static int bt(void) {
     }
     return 0;
 }
+static void add(int start1, const char *w) {
+    for (int i = 0; w[i]; i++) {
+        int p = start1 - 1 + i;
+        for (int j = 0; j < NC; j++) if (cp[j] == p) { if (pl[j] != w[i] - 'A') { fprintf(stderr, "guess contradicts crib\n"); exit(2); } goto next; }
+        cp[NC] = p; pl[NC] = w[i] - 'A'; cl[NC] = K4[p] - 'A' + (TWO ? 26 : 0); NC++;
+        next:;
+    }
+}
 int main(int argc, char **argv) {
-    BEAU = !strcmp(argv[1], "beau"); PER = atoi(argv[2]);
+    BEAU = !strcmp(argv[1], "beau"); TWO = !strcmp(argv[1], "vig4"); PER = atoi(argv[2]);
     if (argc > 3) K4 = argv[3];
-    const char *w1 = "EASTNORTHEAST", *w2 = "BERLINCLOCK";
-    int n = 0;
-    for (int i = 0; w1[i]; i++, n++) { cp[n] = 21 + i; pl[n] = w1[i] - 'A'; cl[n] = K4[21 + i] - 'A'; }
-    for (int i = 0; w2[i]; i++, n++) { cp[n] = 63 + i; pl[n] = w2[i] - 'A'; cl[n] = K4[63 + i] - 'A'; }
-    int r = setv(pl[0], 0) && propagate() && bt();
-    printf("QIII %s period %d: %s  (%lld nodes)\n", argv[1], PER, r ? "SAT" : "UNSAT", nodes);
+    add(22, "EASTNORTHEAST"); add(64, "BERLINCLOCK");
+    char *g = getenv("KGUESS");
+    if (g) { char buf[512]; strncpy(buf, g, 511); buf[511] = 0;
+        for (char *t = strtok(buf, ","); t; t = strtok(0, ",")) { char *c = strchr(t, ':'); *c = 0; add(atoi(t), c + 1); } }
+    int r = setv(pl[0], 0) && (!TWO || setv(cl[0], 0)) && propagate() && bt();
+    printf("%s %s period %d cribs %d: %s  (%lld nodes)\n", TWO ? "QIV" : "QIII", argv[1], PER, NC, r ? "SAT" : "UNSAT", nodes);
     return 0;
 }
