@@ -88,7 +88,7 @@ result is compared with random ciphertexts under the same crib set.
 **THE at 61–63 (…THEBERLINCLOCK), if right:**
 - Quagmire I/II with any alphabet: open periods shrink from {13, 16, 19, 20, 23, 24, 26} to {23, 24, 26} (plus 19 for QII, on one constraint).
 - General Quagmire III Beaufort: 13 and 18 become UNSAT; 23 and 26 stay SAT, as random text also does (7/12, 11/12).
-- General Quagmire IV: 8, 16, 20 become UNSAT. 13, 23, 24, 26 stay SAT at rates random text matches. 19 is being calibrated (`calib_guess.py`).
+- General Quagmire IV: 8, 16, 20 become UNSAT. 13, 23, 24, 26 stay SAT at rates random text matches. 19 stays SAT (with or without THE), while plain random text is 0/30 SAT. The cause is K4's one repeat (plaintext R becomes P at both 28 and 66, 38 = 2×19 apart). Random ciphertexts given that same repeat are 21/30 SAT (`REPEAT=1 python3 calib_c.py vig4 19 30 180`), so period 19 is explained and is not a signal.
 - Hill 4×4: alignment 0 becomes testable and is eliminated; alignment 3 is still untestable.
 - Periodic 27–48: no survivors.
 

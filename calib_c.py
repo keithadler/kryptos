@@ -8,6 +8,8 @@ if len(sys.argv) > 5: env["KGUESS"] = sys.argv[5]
 rnd = random.Random(9100 + int(per))
 AZ = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 cts = ["".join(rnd.choice(AZ) for _ in range(97)) for _ in range(n)]
+if os.environ.get("REPEAT"):   # control: copy K4's one repeat (same letter at 1-based 28 and 66, both plaintext R)
+    cts = [c[:65] + c[27] + c[66:] for c in cts]
 def one(ct):
     try:
         out = subprocess.run(["./quag3", kind, per, ct], capture_output=True, text=True, timeout=secs, env=env).stdout
@@ -17,4 +19,4 @@ def one(ct):
 with ThreadPoolExecutor(6) as ex:
     res = list(ex.map(one, cts))
 k4 = subprocess.run(["./quag3", kind, per], capture_output=True, text=True, env=env).stdout.strip()
-print(f"{kind} period {per} guess={env.get('KGUESS','-')}: random SAT {res.count('SAT')}/{n}, UNSAT {res.count('UNSAT')}, timeout {res.count('timeout')}  |  K4: {k4}")
+print(f"{'[R->P repeat planted] ' if os.environ.get('REPEAT') else ''}{kind} period {per} guess={env.get('KGUESS','-')}: random SAT {res.count('SAT')}/{n}, UNSAT {res.count('UNSAT')}, timeout {res.count('timeout')}  |  K4: {k4}")
