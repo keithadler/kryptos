@@ -78,6 +78,20 @@ not a transposition of English alone. Something polyalphabetic or fractionating 
 One pair repeats: plaintext R becomes ciphertext P at both 28 and 66, 38 apart.
 That fits any key that happens to repeat there.
 
+## Guessed plaintext (conditional results)
+
+`KRYPTOS_GUESS="61:THE" python3 guess_run.py` adds guessed letters for one run only; the confirmed
+clues in `kryptos.py` never change. A guess only adds constraints, so families already eliminated
+stay eliminated, and only the families the confirmed clues left open are rerun. Every satisfiable
+result is compared with random ciphertexts under the same crib set.
+
+**THE at 61–63 (…THEBERLINCLOCK), if right:**
+- Quagmire I/II with any alphabet: open periods shrink from {13, 16, 19, 20, 23, 24, 26} to {23, 24, 26} (plus 19 for QII, on one constraint).
+- General Quagmire III Beaufort: 13 and 18 become UNSAT; 23 and 26 stay SAT, as random text also does (7/12, 11/12).
+- General Quagmire IV: 8, 16, 20 become UNSAT. 13, 23, 24, 26 stay SAT at rates random text matches. 19 is being calibrated (`calib_guess.py`).
+- Hill 4×4: alignment 0 becomes testable and is eliminated; alignment 3 is still untestable.
+- Periodic 27–48: no survivors.
+
 ## The World Clock
 
 Sanborn confirmed in November 2025 that BERLINCLOCK means the Weltzeituhr at Alexanderplatz. Its

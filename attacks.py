@@ -126,7 +126,7 @@ def test_autokey():
 
 # ---------------------------------------------------------------- 4. running key
 def letters(s):
-    return "".join(c for c in s.upper() if c.isalpha())
+    return "".join(c for c in s.upper() if "A" <= c <= "Z")   # ASCII only: OCR texts carry accents
 
 
 def running_key_texts():

@@ -13,6 +13,24 @@ assert len(K4) == 97
 # 1-based start -> plaintext, as released by Sanborn (2010, 2014, 2020).
 CRIBS_1 = {22: "EASTNORTHEAST", 64: "BERLINCLOCK"}
 CRIBS = {s - 1 + i: ch for s, w in CRIBS_1.items() for i, ch in enumerate(w)}  # pos -> plain letter
+CONFIRMED = dict(CRIBS)
+
+# Hypothesis mode: KRYPTOS_GUESS="61:THE,35:OF" (1-based starts) adds GUESSED plaintext for one run.
+# Never edit CRIBS_1 for a guess; results under a guess are conditional on it being right.
+import os as _os
+import sys as _sys
+GUESS = {}
+for _item in filter(None, _os.environ.get("KRYPTOS_GUESS", "").split(",")):
+    _s, _w = _item.split(":")
+    for _i, _ch in enumerate(_w.upper()):
+        _p = int(_s) - 1 + _i
+        if _p in CRIBS and CRIBS[_p] != _ch:
+            raise SystemExit(f"guess {_item} contradicts confirmed crib at {_p + 1}")
+        GUESS[_p] = _ch
+if GUESS:
+    CRIBS.update(GUESS)
+    print(f"[HYPOTHESIS MODE] guessed plaintext {_os.environ['KRYPTOS_GUESS']} "
+          f"({len(GUESS)} letters) added to the 24 confirmed", file=_sys.stderr)
 CRIB_POS = sorted(CRIBS)
 
 AZ = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
