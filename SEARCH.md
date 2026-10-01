@@ -182,6 +182,23 @@ ciphertexts reach (−4.8 to −5.5, 16–22 clues). **No hidden Quagmire I/II a
 **Not informative:** two free alphabets at length 8 (planted recovery only 38–61/97; the method
 produces English-looking nonsense), Quagmire II at 20+, Quagmire I at 26.
 
+**Keyword alphabets (`c/sakw.c`).** Two free alphabets are too loose for 97 letters, but K1/K2's
+alphabet isn't free: it is a keyword followed by the rest of the alphabet in order. Annealing over
+two such keywords, any strings of up to 10 different letters and not only dictionary words, with
+the key taken from the clues, was run at the eight Quagmire IV lengths the clues leave open. Planted
+ciphers (random keywords of 4–9 letters) recovered, Vigenère / Beaufort form, of 8 each:
+
+| Key length | 8 | 13 | 16 | 19 | 20 | 23 | 24 | 26 |
+|---|---|---|---|---|---|---|---|---|
+| Vigenère form | 8 | 8 | 7 | 7 | 5 | 3 | 3 | 4 |
+| Beaufort form | 7 | 6 | 7 | 5 | 5 | 2 | 2 | 3 |
+
+Recovered plants score −4.1 to −4.8 with all 24 clues. **K4's best at each length is −4.9 to −5.7,
+the same range random ciphertexts reach (−4.7 to −6.1).** So no keyword-alphabet Quagmire IV at
+8–19, at good power. At 20–26 the search is weak: at length 23 the plants recovered were those
+whose two keywords total 13 letters or fewer, and with longer keywords a wrong answer can score
+like English, so 97 letters stop deciding. (Evidence `31`.)
+
 ## 5. Guessed plaintext (conditional: holds only if the guess is right)
 
 The best guesses sit where grammar forces them next to the known words: **THE** at 61–63
