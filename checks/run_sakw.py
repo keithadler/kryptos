@@ -16,8 +16,9 @@ MODE = int(sys.argv[1]) if len(sys.argv) > 1 else 4
 MAXKW = int(sys.argv[2]) if len(sys.argv) > 2 else 10
 RESTARTS = sys.argv[3] if len(sys.argv) > 3 else "24"
 ITERS = sys.argv[4] if len(sys.argv) > 4 else "3000000"
+ONE = (13, 16, 19, 20, 23, 24, 26)          # open for one free alphabet (Quagmire I/II, SEARCH.md 4.E)
 OPEN = {4: {"vig": (8, 13, 16, 19, 20, 23, 24, 26), "beau": (8, 13, 16, 19, 20, 23, 24, 26)},
-        3: {"vig": (), "beau": (23, 26)}}[MODE]
+        3: {"vig": (), "beau": (23, 26)}}.get(MODE, {"vig": ONE, "beau": ONE})
 AZ = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 NPLANT, NK4, NRANDOM = 8, 4, 4
 
@@ -48,7 +49,10 @@ if __name__ == "__main__":
             for w, n in (("plant", NPLANT), ("k4", NK4), ("random", NRANDOM)) for i in range(n)]
     with Pool(max(1, (os.cpu_count() or 2) - 1)) as pool:
         res = dict(pool.imap_unordered(job, jobs))
-    print(f"mode {MODE} (Quagmire {'IV, two keyword alphabets' if MODE == 4 else 'III, one keyword alphabet'}), keywords up to "
+    name = {4: "IV, two keyword alphabets", 3: "III, one keyword alphabet on both sides", 1: "I, keyword plaintext alphabet, KRYPTOS ciphertext alphabet",
+            5: "I, keyword plaintext alphabet, A-Z ciphertext alphabet", 2: "II, A-Z plaintext alphabet, keyword ciphertext alphabet",
+            6: "II, KRYPTOS plaintext alphabet, keyword ciphertext alphabet"}[MODE]
+    print(f"mode {MODE} (Quagmire {name}), keywords up to "
           f"{MAXKW} letters (planted: 4-{MAXKW - 1}), {RESTARTS} restarts x {ITERS} steps per run")
     for kind in OPEN:
         for per in OPEN[kind]:

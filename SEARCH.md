@@ -56,7 +56,7 @@ compared with the count chance alone would produce.
 **Planted-cipher verification.** A search that can't find a known answer proves nothing about
 K4. For every search, `verify.py` encrypts a fake plaintext (random letters, with the four clue
 words in place) using a method from that family, runs the same search code on it, and requires a
-find. `make verify` runs all 33 checks in about 45 seconds, and all pass (those that need the
+find. `make verify` runs all 34 checks in about 45 seconds, and all pass (those that need the
 optional texts, a quadgram model or the kissat SAT solver are skipped without them).
 
 **Calibration of satisfiable results.** Where the question is "does *any* alphabet or key fit"
@@ -117,7 +117,7 @@ the search can find an example of that family.
 | Family | Result | Evidence |
 |---|---|---|
 | K1, K2, K3 plaintexts, the whole carved left side, the tableau; forward and reversed; every offset; 8 families | **Eliminated** | `02` |
-| K1–K3 solutions with an *unknown* alphabet on one side (any of 26!); carved spellings, corrected spellings, K2's pre-2006 ending "IDBYROWS", and the carved K1–K3 ciphertext | **Eliminated.** 141k tests, 0 survivors, where chance survival is about 26⁻¹¹ each. | `18` |
+| K1–K3 solutions with an *unknown* alphabet on one side (any of 26!); carved spellings, corrected spellings, K2's pre-2006 ending "IDBYROWS", and the carved K1–K3 ciphertext | **Eliminated.** 141k tests, 0 survivors, where chance survival is about 26⁻¹¹ each. The same texts with both alphabets fixed and *any* lookup table from key letter to shift: 71k tests, 0 survivors. | `18` |
 | Carter's *The Tomb of Tut-ankh-Amen* vols 1–3 (source of K3), King James Bible, Declaration, Constitution, Bill of Rights, Poe vol 1, a 1923 Tutankhamen account; 8 families; tolerant of OCR errors and typos | **No signal.** 149M offsets; best 9/24 key letters, which chance reaches about 36 times at this scale. A planted Carter key with 2 typos scores 22/24. | `10` |
 | **Any English text** as running key, 8 families and variant Beaufort. The key letters the clues force must themselves read as English, whatever the book. | **Eliminated.** K4's best key fragments score −7.3 per four-letter group (e.g. XYHANZEFHYHMK, BNENTXBQRMA). The worst of 218 real English fragments scores −5.1, and planted keys −3.8 to −4.4. | `23` |
 | **Any German text** as running key (umlauts written AE, OE, UE, SS), same families | **Eliminated.** K4's best −7.6; the worst of 2,035 real German fragments −6.5, median −4.3, planted keys −3.7 to −5.1. | `23b` |
@@ -192,8 +192,8 @@ confirmed clues left open (`guess_run.py`; evidence `20_*`).
 - **Hill 4×4:** with OF or IS, all four alignments become testable and all are eliminated.
 - **Quagmire I/II, any alphabet:** with all three guesses, only lengths 23 and 24 stay open (plus 19
   for Quagmire II on one constraint).
-- **Quagmire III Beaufort:** with all three guesses, 13, 18 and 26 are eliminated. 23 stays
-  satisfiable at random-text rates.
+- **Quagmire III Beaufort:** with all three guesses, 26 is eliminated as well (13 and 18 now fall
+  without any guess, §4.E). 23 stays satisfiable at random-text rates.
 - **Quagmire IV:** with all three guesses, 8, 13, 16, 20 are eliminated, and 23 and 24 stay
   satisfiable at random-text rates. **Length 19** stays satisfiable with or without guesses, while
   plain random text almost never is (0/30). The cause is K4's repeated pair (R→P at 28 and 66, 38 =
@@ -252,7 +252,7 @@ public.
 ## 7. Reproduce
 
 ```
-make verify                   # build, then 33 planted-cipher checks (~45 s)
+make verify                   # build, then 34 planted-cipher checks (~45 s)
 checks/fetch_texts.sh         # download the public-domain running-key texts (~6 MB)
 checks/quadgrams_local.py     # or: English and (with 'german') German letter statistics, no download
 python3 k5.py CIPHERTEXT      # when K5 is released: two messages under one key

@@ -6,6 +6,10 @@ Unknown plaintext alphabet x: every crib pins x(P_i); repeated plaintext letters
 agree, and different letters must get different values. Unknown ciphertext alphabet y: the same
 with the cribs' ciphertext letters. With 11+ repeats in the cribs, chance survival is ~26^-11 per test.
 
+A third pass leaves both alphabets fixed (A-Z or KRYPTOS) and frees t instead: ANY lookup table
+from key letter to shift, so equal key letters must force equal shifts. English text repeats
+letters often enough that 24 key letters carry about 10 such constraints.
+
 Texts: K1/K2/K3 plaintexts as carved, with corrected spellings, with K2's pre-2006 ending
 ("IDBYROWS"), joined in order, and the carved K1-K3 ciphertext; each forward and reversed.
 """
@@ -58,6 +62,24 @@ def check(unknown, kind, known, tkey, text, off):
     return True, checks
 
 
+def check_table(kind, xn, yn, text, off):
+    """Both alphabets known, key letter -> shift by any table. Returns (consistent, constraints)."""
+    x, y = IX[xn], IX[yn]
+    seen, checks = {}, 0
+    for p in CRIB_POS:
+        j = off + p
+        if not 0 <= j < len(text):
+            return False, checks
+        v = (y[K4[p]] - x[CRIBS[p]]) % 26 if kind == "vig" else (y[K4[p]] + x[CRIBS[p]]) % 26
+        if text[j] in seen:
+            checks += 1
+            if seen[text[j]] != v:
+                return False, checks
+        else:
+            seen[text[j]] = v
+    return True, checks
+
+
 def main():
     tests = hits = 0
     for name, text in texts().items():
@@ -74,6 +96,18 @@ def main():
         hits += len(found)
         print(f"  {name:28} {len(text):4} letters: {found or 'none'}")
     print(f"{tests} tests, {hits} survivors")
+    tests = 0
+    found = []
+    for name, text in texts().items():
+        for kind in ("vig", "beau"):
+            for xn in ("AZ", "KA"):
+                for yn in ("AZ", "KA"):
+                    for off in range(-CRIB_POS[0], len(text) - CRIB_POS[-1]):
+                        tests += 1
+                        ok, c = check_table(kind, xn, yn, text, off)
+                        if ok and c:
+                            found.append((name, kind, xn, yn, off, c))
+    print(f"any lookup table from key letter to shift: {tests} tests, survivors: {found or 'none'}")
 
 
 if __name__ == "__main__":

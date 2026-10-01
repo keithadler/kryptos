@@ -8,6 +8,7 @@
  *
  *   C_i = Y[ (X(P_i) + k[i mod p]) mod 26 ]        (Beaufort form, env BEAU=1: Y[ (k - X(P_i)) mod 26 ])
  * mode 4: X and Y each a free keyword alphabet.  mode 3: X = Y, one free keyword alphabet.
+ * mode 1: X free, Y = KRYPTOS.  mode 5: X free, Y = A-Z.  mode 2: X = A-Z, Y free.  mode 6: X = KRYPTOS, Y free.
  * The key is not searched where the clues give it: for each key letter the first clue letter on
  * it fixes the shift, given the two alphabets. Only key letters no clue reaches are free.
  * Moves: replace, swap, insert or delete a keyword letter; change one free key shift.
@@ -32,6 +33,7 @@ static inline unsigned long long xr(void) { rs ^= rs << 13; rs ^= rs >> 7; rs ^=
 static inline double ur(void) { return (xr() >> 11) * (1.0 / 9007199254740992.0); }
 
 static int MODE, P, firstcrib[64], nfree, freeres[64];
+static int fixed[2];          /* alphabet a is not searched: its keyword stays as set at the start */
 typedef struct { int kw[2][26], n[2], K[64]; } State;
 
 /* alpha[letter] = index: keyword letters first, then the rest in A-Z order */
@@ -65,7 +67,7 @@ static double score(const State *s, char *out, int *ncrib, int *keyout) {
 static void mutate(State *s) {
     double r = ur();
     if (nfree && r < 0.25) { s->K[freeres[xr() % nfree]] = xr() % 26; return; }
-    int a = MODE == 3 ? 0 : (int)(xr() & 1);
+    int a = MODE == 3 ? 0 : fixed[0] ? 1 : fixed[1] ? 0 : (int)(xr() & 1);
     int *kw = s->kw[a], *n = &s->n[a];
     int in[26] = {0};
     for (int i = 0; i < *n; i++) in[kw[i]] = 1;
@@ -119,6 +121,9 @@ int main(int argc, char **argv) {
             for (int i = 25; i > 0; i--) { int j = xr() % (i + 1), t = perm[i]; perm[i] = perm[j]; perm[j] = t; }
             cur.n[a] = 4 + xr() % 4; if (cur.n[a] > MAXKW) cur.n[a] = MAXKW;
             memcpy(cur.kw[a], perm, sizeof(int) * cur.n[a]);
+            const char *fx = (a == 1 && MODE == 1) || (a == 0 && MODE == 6) ? "KRYPTOS"
+                           : (a == 1 && MODE == 5) || (a == 0 && MODE == 2) ? "" : NULL;
+            if (fx) { fixed[a] = 1; cur.n[a] = (int)strlen(fx); for (int i = 0; fx[i]; i++) cur.kw[a][i] = fx[i] - 'A'; }
         }
         for (int j = 0; j < P; j++) cur.K[j] = xr() % 26;
         double sc = score(&cur, 0, 0, 0), best = sc; State bs = cur;

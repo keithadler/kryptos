@@ -59,7 +59,7 @@ out", each result with its evidence log, guessed-plaintext experiments, and what
 ## Run it
 
 ```
-make verify                 # build, then 33 planted-cipher checks (~45 s)
+make verify                 # build, then 34 planted-cipher checks (~45 s)
 checks/fetch_texts.sh       # optional: the public-domain texts tried as running keys
 checks/reproduce.sh         # regenerate the evidence logs in results/
 python3 docs/make_figures.py

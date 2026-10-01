@@ -204,6 +204,11 @@ ct = "".join(KA[(X.index(p) + KAI[K2_PT[57 + i]]) % 26] for i, p in enumerate(pt
 r = patched([runkey_mixed], ct, lambda: (runkey_mixed.check("plain", "vig", "KA", "KA", K2_PT, 57),
                                          runkey_mixed.check("plain", "vig", "KA", "KA", K2_PT, 58)))
 check("K2 as running key under a masking alphabet", r[0][0] and not r[1][0])
+table = rnd.sample(range(26), 26)
+ct = "".join(KA[(KAI[p] + table[AZ.index(K2_PT[57 + i])]) % 26] for i, p in enumerate(pt))
+r = patched([runkey_mixed], ct, lambda: (runkey_mixed.check_table("vig", "KA", "KA", K2_PT, 57),
+                                         runkey_mixed.check_table("vig", "KA", "KA", K2_PT, 58)))
+check("K2 as running key through an arbitrary lookup table", r[0][0] and r[0][1] >= 8 and not r[1][0])
 
 import digits
 pt, rnd = fake_pt(6)

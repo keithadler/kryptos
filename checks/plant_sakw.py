@@ -16,6 +16,10 @@ pt = list(text[o:o + 97])
 for p, ch in CRIBS.items():
     pt[p] = ch
 kw = ["".join(rnd.sample(AZ, rnd.randint(4, maxkw))) for _ in range(2)]
+if mode in (2, 6):
+    kw[0] = "" if mode == 2 else "KRYPTOS"
+if mode in (1, 5):
+    kw[1] = "KRYPTOS" if mode == 1 else ""
 X = keyed(kw[0])
 Y = X if mode == 3 else keyed(kw[1])
 key = [rnd.randrange(26) for _ in range(per)]

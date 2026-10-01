@@ -1,5 +1,5 @@
 # python3 runkey_mixed.py
-# 2026-09-29T21:09Z
+# 2026-10-01T08:06Z
 
   K1                             63 letters: none
   K2                            370 letters: none
@@ -24,3 +24,4 @@
   K1K2K3 pre-2006 (reversed)    768 letters: none
   carved K1-K3 ciphertext (reversed)  768 letters: none
 141152 tests, 0 survivors
+any lookup table from key letter to shift: 70576 tests, survivors: none
