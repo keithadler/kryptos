@@ -32,6 +32,13 @@ run 23b_key_as_language_german            python3 keylanguage.py german
 run 24_generated_keystreams               python3 keygen.py
 run 25_autokey_unknown_alphabet           python3 autokey_mixed.py
 run 26_sculpture_letters_by_position      python3 gridkey.py
+run 28_hill_with_constant                 python3 hillaffine.py
+if command -v kissat > /dev/null; then
+  run 29_quagmire_sat                     python3 quagsat.py
+else
+  echo "skip 29 (brew install kissat)"
+fi
+run 30_quagmire_IV_two_keywords           python3 quag4dict.py
 if [[ -d data/running_keys ]]; then
   run 10_running_key_outside_texts        python3 runkey.py
 else
@@ -43,4 +50,5 @@ if [[ "$1" == "--long" ]]; then
   run 14_quagmire_III_IV_python           python3 quag34.py
   run 15_quagmire_random_calibration      python3 checks/calib_quag.py
   run 16_annealing_k4_and_random          checks/run_sa_k4.sh
+  run 31_keyword_annealing                python3 checks/run_sakw.py
 fi

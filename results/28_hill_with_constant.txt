@@ -1,0 +1,8 @@
+# python3 hillaffine.py
+# 2026-10-01T07:34Z
+
+n=2: 16 cases (alignment x numberings x direction), 11-11 known blocks each -> 16 eliminated
+n=3: 24 cases (alignment x numberings x direction), 6-7 known blocks each -> 24 eliminated
+K4 survivors: none
+random ciphertexts x10: 0 survivors of 400
+planted 3x3 Hill with A=1..Z=26: survivors [(3, 0, 'AZ', 'AZ', 'C=MP+b'), (3, 0, 'AZ', 'AZ', 'P=MC+b')]

@@ -16,6 +16,8 @@ import random
 import subprocess
 import sys
 
+import numpy
+
 import kryptos
 from kryptos import AZ, KA, CRIBS, K1_CT, K1_PT, K2_PT
 
@@ -270,7 +272,6 @@ check("opposite tableau letter through a lookup table (KA Beaufort)",
 import keylanguage
 quad = next((f for f in (ROOT / "data/quadgrams.bin", ROOT / "data/quadgrams_local.bin") if f.exists()), None)
 if quad:
-    import numpy
     keylanguage.LOGP = numpy.fromfile(quad, dtype=numpy.float32)
     _, rnd = fake_pt(35)
     _, best = keylanguage.search(keylanguage.plant(rnd, KA, KA, "vig", kryptos.K3_PT, 100), [KA])
@@ -278,6 +279,50 @@ if quad:
           best[0][1] == "vig P:KA C:KA key:KA" and best[0][3][:13] == kryptos.K3_PT[121:134] and best[0][0] > -4.6)
 else:
     print("SKIP  English running key scoring (run checks/quadgrams_local.py or quadgrams.py first)")
+
+# ------------------------------------------------------------------ Hill with a constant, keyword pairs, SAT, K5
+import hillaffine
+pt, rnd = fake_pt(36)
+M = numpy.array([[6, 24, 1], [13, 16, 10], [20, 17, 15]])
+ct = "".join(AZ[(v - 1) % 26] for b in range(0, 96, 3)
+             for v in (M @ numpy.array([AZ.index(ch) + 1 for ch in pt[b:b + 3]])) % 26) + "A"
+check("3x3 Hill numbered A=1..Z=26 (a Hill with a constant)",
+      (3, 0, "AZ", "AZ", "C=MP+b") in [r[:5] for r in hillaffine.test(ct) if 0 not in r[6]])
+
+import quag4dict
+from attacks import keyed
+pt, rnd = fake_pt(37)
+alphas = sorted({keyed("".join(rnd.sample(AZ, 6))) for _ in range(3000)} | {keyed("BERLIN"), keyed("CLOCK")})
+W = numpy.stack([keylanguage.index_of(a) for a in alphas])
+X, Y, key = keyed("BERLIN"), keyed("CLOCK"), [AZ.index(ch) for ch in "PALIMPSEST"]
+ct = "".join(Y[(X.index(p) + key[i % 10]) % 26] for i, p in enumerate(pt))
+check("Quagmire IV with two keyword alphabets (BERLIN / CLOCK, key PALIMPSEST)",
+      ("vig", alphas.index(X), alphas.index(Y)) in quag4dict.survivors(ct, W, 10) and not quag4dict.survivors(ct, W, 9))
+
+import shutil
+import quagsat
+if shutil.which("kissat"):
+    pt, rnd = fake_pt(38)
+    X, Y, key = rnd.sample(AZ, 26), rnd.sample(AZ, 26), [rnd.randrange(26) for _ in range(13)]
+    ct = "".join(Y[(X.index(p) + key[i % 13]) % 26] for i, p in enumerate(pt))
+    check("SAT solver: Quagmire IV with random alphabets fits at its key length 13, not at 9 or 11",
+          quagsat.solve(ct, "IV", "vig", 13) is True and quagsat.solve(ct, "IV", "vig", 11) is False
+          and quagsat.solve(ct, "IV", "vig", 9) is False)
+else:
+    print("SKIP  SAT solver checks (kissat not installed)")
+
+if quad:
+    import k5
+    (case, exact, _, _), _ = quiet(k5.selftest, keylanguage.LOGP)
+    check("K5 tool: second message read off at the known positions under a random 97-letter key",
+          case == ("vig", "KA", "KA") and exact)
+    o = subprocess.run([sys.executable, "checks/plant_sakw.py", "4", "16", "1"], capture_output=True, text=True, cwd=ROOT).stdout.split()
+    best = subprocess.run([str(ROOT / "bin/sakw"), "4", "16", "8", "2000000", o[0], "1"], capture_output=True, text=True, cwd=ROOT).stdout
+    got = [l.split()[6] for l in best.splitlines() if l.startswith("BEST")][0]
+    check("keyword-alphabet annealing recovers a planted Quagmire IV (random keywords, length 16)",
+          sum(a == b for a, b in zip(got, o[1])) >= 90)
+else:
+    print("SKIP  K5 tool and keyword annealing (need a quadgram model)")
 
 # ------------------------------------------------------------------ running key over downloaded texts
 carter = ROOT / "data/running_keys/carter_vol1.txt"

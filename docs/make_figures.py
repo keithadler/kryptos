@@ -61,7 +61,7 @@ def carved(t):
 
 # ---------------------------------------------------------------- figure 2: the map
 # R ruled out, C fits but random text fits as often, U too few known letters to test,
-# T search did not finish, N not tested / not meaningful
+# N not tested / not meaningful
 def cells(spec, default="R"):
     row = [default] * 26
     for code, periods in spec.items():
@@ -78,15 +78,14 @@ ROWS = [
     ("Digit keys (Gronsfeld, Gromark), any alphabet", cells({}), "11"),
     ("Any masking alphabet, then a repeating key", cells({"U": [13, 16, 19, 20, 23, 24, 26]}), "13"),
     ("K1/K2’s cipher with any alphabet, Vigenère form", cells({}), "14, 14b"),
-    ("  same, Beaufort form", cells({"T": [13, 18], "C": [23, 26]}), "14, 14b, 15"),
-    ("Two independent unknown alphabets", cells({"C": [8, 13, 16, 19, 20, 23, 24, 26], "T": [11, 12, 14, 18, 21]}), "14, 15, 21b"),
+    ("  same, Beaufort form", cells({"C": [23, 26]}), "14, 14b, 15, 29"),
+    ("Two independent unknown alphabets", cells({"C": [8, 13, 16, 19, 20, 23, 24, 26]}), "14, 15, 21b, 29"),
     ("Trifid, any cube (key length = group size)", cells({"N": [1, 25, 26]}), "12"),
 ]
 LEGEND = [
     ("R", "Ruled out: no key of this length fits all 24 known letters"),
     ("C", "Fits, but random text fits just as often: not evidence"),
     ("U", "Too few known letters to test"),
-    ("T", "Search did not finish"),
     ("N", "Not tested"),
 ]
 

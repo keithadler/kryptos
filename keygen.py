@@ -10,14 +10,18 @@ eliminated (attacks.py). These are the other ways to make a key by hand without 
   interrupt  a repeating key that restarts after a chosen ciphertext letter, at or after a chosen
              plaintext letter, or at each word
   morse      the Morse phrases on the entrance slabs, in every order and spelling, as the key
-  cities     a key strung together from city names (the World Clock lists 146 places): does any
-             forced key fragment contain a long piece of a city name?
+  cities     a key strung together from city names: does any forced key fragment contain a long
+             piece of a name? Names: the time-zone database (English) and the 147 entries on the
+             Berlin World Clock (German, data/weltzeituhr_cities.txt). The clock's list is also
+             tried as a running key in face order, and by initials.
 
 usage: python3 keygen.py [poly] [recur] [interrupt] [morse] [cities]     (default: all)
 """
 import itertools
 import math
 import os
+import pathlib
+import unicodedata
 import random
 import sys
 import numpy as np
@@ -279,6 +283,53 @@ def city_names():
     return names
 
 
+PRE_1997 = {"St. Petersburg": "Leningrad", "Almaty": "Alma Ata", "Pressburg": "Bratislava",
+            "Nischnij Nowgorod": "Gorki", "Jekaterinburg": "Swerdlowsk", "Bischkek": "Frunse",
+            "Aschgabat": "Aschchabad", "Santafé de Bogotá": "Bogotá", "Wilna": "Vilnius"}
+
+
+def letters_de(name, expand):
+    """A-Z only. expand: AE/OE/UE for umlauts (the hand-cipher way); otherwise plain A/O/U."""
+    if expand:
+        name = name.translate(str.maketrans({"ä": "ae", "ö": "oe", "ü": "ue", "Ä": "AE", "Ö": "OE", "Ü": "UE", "ß": "ss"}))
+    name = unicodedata.normalize("NFD", name)
+    return "".join(c for c in name.upper() if "A" <= c <= "Z")
+
+
+def clock_faces():
+    """The World Clock's entries, one list per face, UTC+1 first."""
+    f = pathlib.Path(__file__).with_name("data") / "weltzeituhr_cities.txt"
+    return [[n.strip() for n in l.split(",")] for l in f.read_text().splitlines() if l.strip() and not l.startswith("#")]
+
+
+def clock_names():
+    """Every spelling tried: as listed and with the names the clock carried before 1997."""
+    names = set()
+    for n in [n for face in clock_faces() for n in face] + list(PRE_1997.values()):
+        for expand in (True, False):
+            names.add(letters_de(n, expand))
+            names.update(w for w in (letters_de(part, expand) for part in n.replace("-", " ").split()) if len(w) >= 4)
+    return {n for n in names if len(n) >= 3}
+
+
+def clock_streams():
+    """The list as one key text: face order from each starting face, east or west, cities in listed
+    order or reversed, post- or pre-1997 names, umlauts both ways; whole names and initials."""
+    out = {}
+    faces = clock_faces()
+    for era in ("1997", "1969"):
+        fs = [[PRE_1997.get(n, n) if era == "1969" else n for n in face] for face in faces]
+        for start in range(24):
+            for step in (1, -1):
+                for rev in (0, 1):
+                    order = [fs[(start + step * i) % 24][::-1] if rev else fs[(start + step * i) % 24] for i in range(24)]
+                    flat = [n for face in order for n in face]
+                    for expand in (True, False):
+                        out["".join(letters_de(n, expand) for n in flat)] = None
+                        out["".join(letters_de(n, expand)[0] for n in flat)] = None
+    return list(out)
+
+
 def longest_piece(ct, blob):
     """Longest stretch of any forced key fragment (either run, any family, key read in A-Z or KRYPTOS)
     that occurs inside a name."""
@@ -309,6 +360,26 @@ def test_cities(rnd):
     key = "CAIROMOSCOWHAVANATOKYOBERLINWARSAWLISBONDELHIBAGHDADATHENSPRAGUEHONOLULUANCHORAGEDENVERCHICAGOLIMACARACAS"
     a = ix(KA)
     print(f"  planted (KA Vigenere, key CAIROMOSCOWHAVANA...): {longest_piece(plant(rnd, [a[c] for c in key]), blob)}")
+
+    names = clock_names()
+    print(f"== Key strung together from the Berlin World Clock's place names, any order: {len(names)} spellings")
+    blob = "|".join(sorted(names))
+    print(f"  K4: longest piece of a key fragment inside a name: {longest_piece(K4, blob)}")
+    print(f"  random ciphertexts x20: {sorted(longest_piece(random_ct(rnd), blob)[0] for _ in range(20))}")
+    key = "KAIROMOSKAUHAVANNATOKYOBERLINWARSCHAULISSABONNEWDELHIBAGDADATHENPRAGHONOLULUANCHORAGEDENVERLIMACARACASPEKING"
+    print(f"  planted (KA Vigenere, key KAIROMOSKAUHAVANNA...): {longest_piece(plant(rnd, [a[c] for c in key]), blob)}")
+
+    texts = clock_streams()
+    print(f"== The clock's list as a running key in face order: {len(texts)} readings (start face, direction, era, "
+          f"umlauts; names or initials), every offset, wrapping")
+    best, where, tests, hist = morse(K4, texts)
+    print(f"  K4: {tests} tests, best {best}/24 key letters ({where[0]}, offset {where[1]})")
+    print(f"  tests reaching m matches: { {m: int(hist[m:].sum()) for m in (6, 7, 8, 9) } }")
+    tail = {m: tests * sum(math.comb(24, j) * 25 ** (24 - j) for j in range(m, 25)) / 26 ** 24 for m in (6, 7, 8, 9)}
+    print(f"  expected by chance:        { {m: round(v, 1) for m, v in tail.items()} }")
+    t = texts[40]
+    best, where, _, _ = morse(plant(rnd, [a[t[(200 + i) % len(t)]] for i in range(97)]), texts)
+    print(f"  planted (KA Vigenere, offset 200): best {best}/24 ({where[0]}, offset {where[1]})")
 
 
 if __name__ == "__main__":

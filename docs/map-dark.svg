@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1072 448" width="1072" height="448" role="img" aria-label="Map of which cipher families the 24 known letters rule out at each key length 1 to 26">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1072 428" width="1072" height="428" role="img" aria-label="Map of which cipher families the 24 known letters rule out at each key length 1 to 26">
 <defs><pattern id="hatch-dark" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#1a1a19"/><line x1="0" y1="0" x2="0" y2="6" stroke="#5c5b56" stroke-width="2"/></pattern></defs>
-<rect width="1072" height="448" fill="#1a1a19"/>
+<rect width="1072" height="428" fill="#1a1a19"/>
 <text x="20" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#ffffff">What the 24 known letters rule out</text>
 <text x="20" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#c3c2b7">Each cell is one cipher family at one key length. Evidence log for each row in results/.</text>
 <text x="736" y="56" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#c3c2b7">key length</text>
@@ -221,12 +221,12 @@
 <rect x="648" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
 <rect x="670" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
 <rect x="692" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
-<rect x="714" y="232" width="20" height="20" rx="3" fill="url(#hatch-dark)" stroke="#5c5b56" stroke-width="1"/>
+<rect x="714" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
 <rect x="736" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
 <rect x="758" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
 <rect x="780" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
 <rect x="802" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
-<rect x="824" y="232" width="20" height="20" rx="3" fill="url(#hatch-dark)" stroke="#5c5b56" stroke-width="1"/>
+<rect x="824" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
 <rect x="846" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
 <rect x="868" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
 <rect x="890" y="232" width="20" height="20" rx="3" fill="#3987e5"/>
@@ -247,17 +247,17 @@
 <rect x="604" y="254" width="20" height="20" rx="3" fill="#d95926"/>
 <rect x="626" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
 <rect x="648" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
-<rect x="670" y="254" width="20" height="20" rx="3" fill="url(#hatch-dark)" stroke="#5c5b56" stroke-width="1"/>
-<rect x="692" y="254" width="20" height="20" rx="3" fill="url(#hatch-dark)" stroke="#5c5b56" stroke-width="1"/>
+<rect x="670" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
+<rect x="692" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
 <rect x="714" y="254" width="20" height="20" rx="3" fill="#d95926"/>
-<rect x="736" y="254" width="20" height="20" rx="3" fill="url(#hatch-dark)" stroke="#5c5b56" stroke-width="1"/>
+<rect x="736" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
 <rect x="758" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
 <rect x="780" y="254" width="20" height="20" rx="3" fill="#d95926"/>
 <rect x="802" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
-<rect x="824" y="254" width="20" height="20" rx="3" fill="url(#hatch-dark)" stroke="#5c5b56" stroke-width="1"/>
+<rect x="824" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
 <rect x="846" y="254" width="20" height="20" rx="3" fill="#d95926"/>
 <rect x="868" y="254" width="20" height="20" rx="3" fill="#d95926"/>
-<rect x="890" y="254" width="20" height="20" rx="3" fill="url(#hatch-dark)" stroke="#5c5b56" stroke-width="1"/>
+<rect x="890" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
 <rect x="912" y="254" width="20" height="20" rx="3" fill="#3987e5"/>
 <rect x="934" y="254" width="20" height="20" rx="3" fill="#d95926"/>
 <rect x="956" y="254" width="20" height="20" rx="3" fill="#d95926"/>
@@ -298,8 +298,6 @@
 <text x="42" y="355.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#c3c2b7">Fits, but random text fits just as often: not evidence</text>
 <rect x="20" y="364" width="14" height="14" rx="3" fill="#383835"/>
 <text x="42" y="375.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#c3c2b7">Too few known letters to test</text>
-<rect x="20" y="384" width="14" height="14" rx="3" fill="url(#hatch-dark)" stroke="#5c5b56" stroke-width="1"/>
-<text x="42" y="395.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#c3c2b7">Search did not finish</text>
-<rect x="20.5" y="404.5" width="13" height="13" rx="3" fill="none" stroke="#5c5b56" stroke-width="1" stroke-dasharray="2 2"/>
-<text x="42" y="415.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#c3c2b7">Not tested</text>
+<rect x="20.5" y="384.5" width="13" height="13" rx="3" fill="none" stroke="#5c5b56" stroke-width="1" stroke-dasharray="2 2"/>
+<text x="42" y="395.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#c3c2b7">Not tested</text>
 </svg>

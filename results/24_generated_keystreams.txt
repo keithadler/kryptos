@@ -1,5 +1,5 @@
 # python3 keygen.py
-# 2026-10-01T07:02Z
+# 2026-10-01T07:35Z
 
 == Polynomial keystream a + b*i + c*C(i,2) + d*C(i,3), 26^4 keys per family
   K4 survivors: none
@@ -36,3 +36,12 @@
   K4: longest piece of a key fragment inside a city name: (4, 'COPE')
   random ciphertexts x20: [3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5]
   planted (KA Vigenere, key CAIROMOSCOWHAVANA...): (8, 'HONOLULU')
+== Key strung together from the Berlin World Clock's place names, any order: 193 spellings
+  K4: longest piece of a key fragment inside a name: (4, 'TANB')
+  random ciphertexts x20: [3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5]
+  planted (KA Vigenere, key KAIROMOSKAUHAVANNA...): (6, 'BERLIN')
+== The clock's list as a running key in face order: 576 readings (start face, direction, era, umlauts; names or initials), every offset, wrapping
+  K4: 7409664 tests, best 7/24 key letters (('vig', 'KA', 'AZ', 'AZ'), offset 838)
+  tests reaching m matches: {6: 2424, 7: 48, 8: 0, 9: 0}
+  expected by chance:        {6: 1772.5, 7: 178.9, 8: 15.0, 9: 1.1}
+  planted (KA Vigenere, offset 200): best 24/24 (('vig', 'KA', 'KA', 'KA'), offset 101)

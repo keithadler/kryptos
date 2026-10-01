@@ -1,0 +1,28 @@
+# Place names on the Weltzeituhr (Alexanderplatz), one line per face, UTC+1 first, going east.
+# State after the 1997 renovation. Transcribed from the list in Hungarian Wikipedia's "Uránia világóra"
+# (section "Az órán szereplő városok", CC BY-SA 4.0), read 2026-10-01; not checked against the monument.
+# "+30'" half-hour marks dropped. "Brüsszel" there is the Hungarian spelling; the clock is in German: Brüssel.
+Amsterdam, Berlin, Brüssel, Budapest, Madrid, Paris, Prag, Stockholm, Warschau, Oslo, Kopenhagen, Wien, Bern, Pressburg, Belgrad, Rom, Tunis, Kinshasa
+Helsinki, Riga, Tallinn, Wilna, Minsk, Kiew, Bukarest, Sofia, Nikosia, Ankara, Istanbul, Athen, Tel Aviv, Jerusalem, Beirut, Damaskus, Kairo, Kapstadt
+Murmansk, St. Petersburg, Moskau, Teheran, Bagdad, Aden, Sanaa, Addis Abeba, Mogadischu, Daressalam, Antananarivo, Kuwait
+Nischnij Nowgorod, Wolgograd, Baku, Tiflis, Eriwan, Kabul, Mauritius
+Jekaterinburg, Aschgabat, Bischkek, Duschanbe, New Delhi, Karachi, Colombo
+Omsk, Almaty, Taschkent, Nowosibirsk, Rangun, Dhaka
+Krasnojarsk, Hanoi, Bangkok, Phnom Penh, Jakarta
+Irkutsk, Ulan-Bator, Peking, Shanghai, Manila, Perth, Hongkong, Kuala Lumpur, Singapur
+Jakutsk, Pjöngjang, Tokyo, Seoul, Chabarowsk, Wladiwostok, Sydney, Canberra, Melbourne
+Magadan, Sachalin
+Kamtschatka, Wellington
+Datumsgrenze
+Kap Deschnew, Apia
+Honolulu, Marquesas Inseln
+Nome, Fairbanks, Anchorage
+Vancouver, Dawson, San Francisco, Los Angeles
+Edmonton, Denver
+New Orleans, Mexiko-Stadt, Guatemala-Stadt, Managua, Galápagos Inseln
+Montreal, Washington, New York, Havanna, Panama, Santafé de Bogotá, Quito, Lima
+Halifax, Caracas, La Paz, Asunción, Santiago de Chile
+Westgrönland, Brasilia, Rio de Janeiro, São Paulo, Montevideo, Buenos Aires
+Ostgrönland
+Azoren, Kap Verde
+Reykjavik, Dublin, London, Lissabon, Madeira, Bissau, Casablanca, Conakry, Dakar, Bamako, Accra

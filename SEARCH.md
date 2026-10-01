@@ -56,8 +56,8 @@ compared with the count chance alone would produce.
 **Planted-cipher verification.** A search that can't find a known answer proves nothing about
 K4. For every search, `verify.py` encrypts a fake plaintext (random letters, with the four clue
 words in place) using a method from that family, runs the same search code on it, and requires a
-find. `make verify` runs all 28 checks in about 30 seconds, and all pass (two need optional data
-and are skipped without it).
+find. `make verify` runs all 33 checks in about 45 seconds, and all pass (those that need the
+optional texts, a quadgram model or the kissat SAT solver are skipped without them).
 
 **Calibration of satisfiable results.** Where the question is "does *any* alphabet or key fit"
 (a constraint-satisfaction result), K4 passing can just mean the family is too flexible. Every
@@ -123,6 +123,7 @@ the search can find an example of that family.
 | **Any German text** as running key (umlauts written AE, OE, UE, SS), same families | **Eliminated.** K4's best −7.6; the worst of 2,035 real German fragments −6.5, median −4.3, planted keys −3.7 to −5.1. | `23b` |
 | English or German running key under any dictionary-word alphabet (208k English, 236k with German; 5 arrangements) | **No signal.** K4's best (−5.2 English, −5.4 German) sits inside the range of random ciphertexts. 94% of English and 82% of German fragments would have stood out, so this is a result at about that power, not a proof. | `23`, `23b` |
 | The Morse phrases on the entrance slabs as running or repeating key: 7,200 orders and spellings (with and without the stray E's, INTERPRETATIT/U/ON, SOS and RQ), every offset | **Eliminated.** 10.6M tests, best 8/24 key letters; chance predicts about 20 tests at 8 or more. | `24` |
+| The Berlin World Clock's 147 place names (German, as on the clock since 1997, and with the nine names known to have differed before): as a key strung together in any order; as a running key in face order from any face, in either direction; and by initials | **Eliminated.** No forced key fragment shares more than 4 letters in a row with any name, the same as random text (a planted city-name key shows 6–8). In face order the best is 7/24 key letters over 7.4M tests, below what chance gives. The same holds for 502 English city names from the time-zone database. | `24` |
 | Sculpture letters taken *by position*: the letter at K4's own row and column on the tableau or ciphertext panel, every row/column offset, mirrored or not; both grids read by rows, mirrored rows, boustrophedon and columns | **Eliminated as an exact key** (best 8/24, as random text). Through *any* lookup table from key letter to shift, the directly opposite tableau letters (HIJLMNQUVWXZK, KRYABCDEFGH) contradict themselves in all 8 families. Other alignments hold at most 2 constraints, at random-text rates, so the table form is barely testable. | `26` |
 
 ### C. Transposition combined with a repeating tableau key
@@ -139,6 +140,7 @@ the search can find an example of that family.
 | Family | Result | Evidence |
 |---|---|---|
 | Hill cipher 2×2, 3×3, 4×4 (A–Z and KRYPTOS indexing) | **Eliminated**, except 4×4 at two block alignments the clues can't test | `01` |
+| Hill cipher 2×2 and 3×3 with an added constant, C = M·P + b, which covers every starting number (A=1…Z=26 as well as A=0); plaintext and ciphertext numbered in A–Z or KRYPTOS order independently; both directions | **Eliminated.** 40 cases, none fits. 4×4 has too few known blocks to test in this form. | `28` |
 | Trifid, any 3×3×3 cube, periods 2–24, every group offset | **Eliminated.** 299 of 299 cases have no solution. | `12` |
 | Anything built on a 5×5 square (Bifid, Playfair, two-square, four-square, ADFGX) | **Eliminated outright:** K4 uses all 26 letters, and a 5×5 square outputs 25 | — |
 | Playfair, Porta, and any cipher that never maps a letter to itself | **Eliminated outright:** position 74 is K→K | — |
@@ -148,9 +150,10 @@ the search can find an example of that family.
 | Family | Result | Evidence |
 |---|---|---|
 | Any masking alphabet then a repeating key (general Quagmire I), or a repeating key then any substitution (general Quagmire II) | **Eliminated at lengths 1–12, 14, 15, 17, 18, 21, 22, 25** (some variants also 13, 20, 23). The rest hold at most 1 constraint, so the clues can't test them. | `13` |
-| **One unknown alphabet on both sides**: K1/K2's own cipher type with any alphabet (general Quagmire III), Vigenère form | **Eliminated at every length 1–26** | `14`, `14b` |
-| The same, Beaufort form | **Eliminated at 1–12, 14–17, 19–22, 24, 25.** 13 and 18 unresolved after 30 min of search. 23 and 26 satisfiable, but so are 10–27 of 30 random ciphertexts. | `14`, `14b`, `15` |
-| Two independent unknown alphabets (general Quagmire IV) | **Eliminated at 1–7, 9, 10, 15, 17, 22, 25.** Satisfiable at 8, 13, 16, 19, 20, 23, 24, 26, but random ciphertexts pass at similar rates (§5 settles 19). | `14`, `15` |
+| **One unknown alphabet on both sides**: K1/K2's own cipher type with any alphabet (general Quagmire III), Vigenère form | **Eliminated at every length 1–26, and at 31–40 and 42–52.** 27–30 and 53+ can't be tested. 41 is satisfiable only because K4's two self-encryptions (33 and 74) are 41 apart; 8 of 30 random ciphertexts are too. | `14`, `14b`, `29` |
+| The same, Beaufort form | **Eliminated at every length up to 50 except 23, 26–33, 46, 47 and 49.** 13 and 18, which backtracking could not finish, are proved impossible by SAT solver. At the exceptions 16–30 of 30 random ciphertexts are satisfiable too. | `14`, `14b`, `15`, `29` |
+| Two independent unknown alphabets (general Quagmire IV) | **Eliminated at 1–7, 9–12, 14, 15, 17, 18, 21, 22, 25, 34, 36, 42–45, 50** (11, 12, 14, 18, 21 and everything above 26 by SAT solver). Satisfiable at 8, 13, 16, 19, 20, 23, 24, 26 and the remaining lengths, but random ciphertexts pass at similar rates. The exceptions, 19 and 38 (2 of 30 random), come from K4's repeated pair 38 apart (§5). | `14`, `15`, `29` |
+| Quagmire IV with **any two dictionary-word alphabets**: 236k keyed alphabets (English and German words, names, the World Clock's places, A–Z, KRYPTOS), every ordered pair (5.6×10¹⁰), Vigenère and Beaufort, key lengths 1–24 and 34–48. The key cancels between clue letters on the same key letter, so each alphabet gets a signature and fitting pairs are found by a join. | **Eliminated at 1–24.** No pair fits except 5 at length 16, 9 at 23 and 11,462 at 24, which is what chance gives (random ciphertexts: 5,000–13,000 at 24), and every one decrypts the rest of K4 to noise: best −7.8, −7.1 and −6.7 over 73, 49 and 53 new letters, where English is −4.2 to −4.6. At 34–48 the pairs that fit by chance reveal only about 22 new letters and the best reads no better than for random ciphertexts (−5.7): no signal. Planted pairs are found and return their plaintext. Lengths 25–33 and 49+ give fewer than 5 constraints. | `30` |
 | Ciphertext autokey with one unknown alphabet on all three sides, Vigenère, Beaufort and variant forms | **Eliminated at every lag 1–21** (24 equations each; no alphabet fits). Longer lags leave too few equations. | `25` |
 | Plaintext autokey with one unknown alphabet | **Eliminated at lags 1–5**, and at 6–10 for the Vigenère and variant forms. Beaufort form satisfiable at 6, 7, 8, 10, but so are 16–30 of 30 random ciphertexts. | `25` |
 
@@ -225,13 +228,11 @@ transposition-plus-repeating-key combination searched. What remains falls into c
   written down and searched.
 - **Keys from sources not tried.** With the A–Z and KRYPTOS alphabets no English or German text
   can be the key (§4.B), so what is left is a key text in another language, a key that isn't
-  prose, or a key under an alphabet that isn't in the dictionary. The World Clock's city names are
-  one such list. The forced key letters share no more than 4 letters in a row with any of 502
-  city names in the time-zone database, the same as random text (evidence `24`), but those are
-  English spellings.
-  There's no reliable per-face list of the German names, and the 1997 renovation changed them
-  (Leningrad, Alma Ata, Bratislava; Jerusalem and Tel Aviv added), so today's clock isn't the one
-  Sanborn saw in 1990.
+  prose, or a key under an alphabet that isn't in the dictionary. The World Clock's place names
+  are ruled out as the key text (§4.B), with one caveat: the list used is the clock since 1997
+  (`data/weltzeituhr_cities.txt`). Twenty names were added then and several changed, and only
+  nine of the older names are known here, so the clock Sanborn could have seen in 1990 is covered
+  for keys in any order but only approximately for keys in face order.
 - **Not yet searched:** transposition searches with typo tolerance, keyed double columnar, route
   ciphers other than columns and rotations, fractionation on a 6×6 square.
 
@@ -241,21 +242,26 @@ messages under one method double the constraints, and much of what is undecidabl
 become decidable. Sanborn has said the two messages share some of the same coded words in the same
 positions. If that means equal ciphertext for equal plaintext at the same place, the cipher depends
 only on position, and K4 and K5 are two messages under one key: subtracting one from the other
-removes the key in every additive family. Every search here can be rerun against K5 as soon as it
-is public.
+removes the key in every additive family. `k5.py` is ready for that day: given K5's ciphertext
+it reads off K5's plaintext at K4's 24 known positions for each numbering of the two sides and
+scores it as English. On a planted pair under a random 97-letter key the right numbering gives 24
+letters of clean English (−3.8) and the other seven give noise (−6.7 to −8.6). It then drafts both
+messages and drags guessed words. Every search here can also be rerun against K5 as soon as it is
+public.
 
 ## 7. Reproduce
 
 ```
-make verify                   # build, then 28 planted-cipher checks (~30 s)
+make verify                   # build, then 33 planted-cipher checks (~45 s)
 checks/fetch_texts.sh         # download the public-domain running-key texts (~6 MB)
 checks/quadgrams_local.py     # or: English and (with 'german') German letter statistics, no download
+python3 k5.py CIPHERTEXT      # when K5 is released: two messages under one key
 checks/reproduce.sh           # regenerate the quick evidence logs in results/ (~1 min)
 checks/reproduce.sh --long    # also rerun the multi-hour searches
 KRYPTOS_GUESS="61:THE" python3 guess_run.py    # rerun the open families under a guess
 ```
 
-Requires Python 3 with numpy, and a C compiler. The dictionary searches use macOS's
+Requires Python 3 with numpy, and a C compiler; `quagsat.py` also needs kissat (`brew install kissat`). The dictionary searches use macOS's
 `/usr/share/dict/words` and `propernames`.
 
 ## 8. Sources

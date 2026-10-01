@@ -2,7 +2,7 @@
 CC ?= cc
 CFLAGS ?= -O3
 
-BINS = bin/trans bin/dfs bin/quag3 bin/sa
+BINS = bin/trans bin/dfs bin/quag3 bin/sa bin/sakw
 
 all: $(BINS)
 

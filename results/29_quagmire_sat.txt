@@ -1,0 +1,90 @@
+# python3 quagsat.py
+# 2026-10-01T07:52Z
+
+== Agreement with the backtracking solvers on settled cases
+  QIII vig period 18: UNSAT  (agrees)
+  QIII beau period 11: UNSAT  (agrees)
+  QIII beau period 19: UNSAT  (agrees)
+  QIII beau period 20: UNSAT  (agrees)
+  QIV vig period 7: UNSAT  (agrees)
+  QIV vig period 8: SAT  (agrees)
+== Quagmire III, Vigenere form: key lengths 1-60, any alphabet(s)
+  no alphabet fits (eliminated): [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52]
+  satisfiable, with how many of 30 random ciphertexts are too:
+    length 27: random 30/30
+    length 28: random 30/30
+    length 29: random 30/30
+    length 30: random 28/30
+    length 41: random  8/30
+    length 53: random 30/30
+    length 54: random 30/30
+    length 55: random 30/30
+    length 56: random 30/30
+    length 57: random 30/30
+    length 58: random 30/30
+    length 59: random 30/30
+    length 60: random 30/30
+== Quagmire III, Beaufort form: key lengths 1-60, any alphabet(s)
+  no alphabet fits (eliminated): [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 48, 50]
+  satisfiable, with how many of 30 random ciphertexts are too:
+    length 23: random 18/30
+    length 26: random 25/30
+    length 27: random 30/30
+    length 28: random 30/30
+    length 29: random 30/30
+    length 30: random 27/30
+    length 31: random 25/30
+    length 32: random 16/30
+    length 33: random 18/30
+    length 46: random 18/30
+    length 47: random 18/30
+    length 49: random 19/30
+    length 51: random 23/30
+    length 52: random 25/30
+    length 53: random 30/30
+    length 54: random 30/30
+    length 55: random 30/30
+    length 56: random 30/30
+    length 57: random 30/30
+    length 58: random 30/30
+    length 59: random 30/30
+    length 60: random 30/30
+== Quagmire IV: key lengths 1-60, any alphabet(s)
+  no alphabet fits (eliminated): [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 14, 15, 17, 18, 21, 22, 25, 34, 36, 42, 43, 44, 45, 50]
+  satisfiable, with how many of 30 random ciphertexts are too:
+    length  8: random  3/30
+    length 13: random 16/30
+    length 16: random 20/30
+    length 19: random  2/30
+    length 20: random 19/30
+    length 23: random 26/30
+    length 24: random 25/30
+    length 26: random 28/30
+    length 27: random 30/30
+    length 28: random 30/30
+    length 29: random 30/30
+    length 30: random 29/30
+    length 31: random 30/30
+    length 32: random 24/30
+    length 33: random 26/30
+    length 35: random 19/30
+    length 37: random 24/30
+    length 38: random  2/30
+    length 39: random 17/30
+    length 40: random 19/30
+    length 41: random 15/30
+    length 46: random 26/30
+    length 47: random 24/30
+    length 48: random 25/30
+    length 49: random 28/30
+    length 51: random 28/30
+    length 52: random 28/30
+    length 53: random 30/30
+    length 54: random 30/30
+    length 55: random 30/30
+    length 56: random 30/30
+    length 57: random 30/30
+    length 58: random 30/30
+    length 59: random 30/30
+    length 60: random 30/30
+== Planted Quagmire IV, random alphabets, key length 13: SAT at 13, UNSAT at 12
