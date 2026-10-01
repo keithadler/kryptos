@@ -2,6 +2,9 @@ bin/
 __pycache__/
 # generated
 data/quadgrams.bin
+data/quadgrams_local.bin
+data/quadgrams_de_local.bin
+data/words_de_local.txt
 data/keyword_orders.txt
 # downloaded public-domain texts (see data/SOURCES.md, fetch with checks/fetch_texts.sh)
 data/running_keys/

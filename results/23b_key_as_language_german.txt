@@ -1,0 +1,33 @@
+# python3 keylanguage.py german
+# 2026-10-01T06:55Z
+
+language: german; quadgram model: quadgrams_de_local.bin
+== German key fragments of the same shape (the German Weltzeituhr article, 2035 samples): worst -6.54, median -4.25, best -3.24
+== Fixed alphabets (A-Z and KRYPTOS), 8 families and variant Beaufort
+  K4: 21 tests
+     -7.55  beau P:KA C:KA key:AZ                                    XYHANZEFHYHMK | BNENTXBQRMA
+     -7.65  vig P:KA C:AZ key:AZ                                     UELRXLONZVDMO | FNOEEADIAGK
+     -7.76  varbeau P:AZ C:KA key:AZ                                 SJRXTUOSORAMN | ICOPEJKMCZK
+  planted A-Z Vigenere, the German Weltzeituhr article as key: 21 tests
+     -3.90  vig P:AZ C:AZ key:AZ                                     LSMITARBEITER | UNGDESBERLI
+  planted KRYPTOS Vigenere, the German Weltzeituhr article as key: 21 tests
+     -5.05  vig P:KA C:KA key:KA                                     VIMJAHRUEBERT | RERICHJOHND
+  planted KRYPTOS Beaufort, the German Weltzeituhr article as key: 21 tests
+     -3.71  beau P:KA C:KA key:KA                                    RDIEVOLLESTUN | FTAUFEINENS
+  -> K4's best (-7.55) is below the worst German fragment (-6.54): ELIMINATED for any German key text
+== Dictionary-keyed alphabets: 235934 alphabets, 5 arrangements
+  K4: 8493624 tests
+     -5.42  varbeau P:W C:KA key:AZ      THALMOENICURBDFGJKPQSVWXYZ  ULTENLIZITCOU | TEIHEDRETGR
+     -5.44  beau P:W C:KA key:KA         MUSIKTELRHABCDFGJNOPQVWXYZ  MRPREFESYNDBE | TBEPAUTSTIT
+     -5.47  vig P:AZ C:W key:W           OVERMIGHTYABCDFJKLNPQSUWXZ  ALBTHGEABEKRE | LIEKOSEFOLG
+  planted WELTZEITUHR beau (Quagmire III), the German Weltzeituhr article as key: 8493624 tests
+     -3.91  beau P:W C:W key:W           WELTZIUHRABCDFGJKMNOPQSVXY  NGVONWALTERWO | INERZEITALS
+      right alphabet found: True
+  planted ALEXANDERPLATZ vig (Quagmire III), the German Weltzeituhr article as key: 8493624 tests
+     -3.97  vig P:W C:W key:W            ALEXNDRPTZBCFGHIJKMOQSUVWY  ZEITUHREINTRA | UENENSCHWER
+      right alphabet found: True
+  planted MAUER vig (Quagmire III), the German Weltzeituhr article as key: 8493624 tests
+     -3.97  vig P:W C:W key:W            MAUERBCDFGHIJKLNOPQSTVWXYZ  TELLTENBAHNEN | CHDIETECHNI
+      right alphabet found: True
+  random ciphertexts x8, best score each: [-5.54, -5.41, -5.38, -5.31, -5.29, -5.04, -5.02, -4.71]
+  -> K4's best (-5.42) is inside the random range. 82% of German fragments would have beaten every random best, so this is a no-signal result at about that power, not a proof.

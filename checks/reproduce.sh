@@ -25,6 +25,13 @@ run 13_quagmire_I_II_any_alphabet         python3 mixedalpha.py
 run 17_layer_two                          python3 layer2.py 26
 run 18_k1k3_running_key_masked            python3 runkey_mixed.py
 run 19_guessed_words_periods_27-48        python3 drag.py
+[[ -f data/quadgrams.bin || -f data/quadgrams_local.bin ]] || python3 checks/quadgrams_local.py
+[[ -f data/quadgrams_de_local.bin ]] || python3 checks/quadgrams_local.py german
+run 23_key_as_language_english            python3 keylanguage.py english
+run 23b_key_as_language_german            python3 keylanguage.py german
+run 24_generated_keystreams               python3 keygen.py
+run 25_autokey_unknown_alphabet           python3 autokey_mixed.py
+run 26_sculpture_letters_by_position      python3 gridkey.py
 if [[ -d data/running_keys ]]; then
   run 10_running_key_outside_texts        python3 runkey.py
 else

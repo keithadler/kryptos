@@ -1,0 +1,57 @@
+# KRYPTOS_GUESS="1:THECOMPASSROSEISHEREXEASTNORTHEASTTHISISYOURPOSITIONXCOMMISSIONBERLINCLOCKWHICHISNORTHEASTOFHEREX" python3 guess_run.py; KRYPTOS_GUESS=... python3 attacks.py periodic progressive autokey
+# 2026-10-01T06:20Z
+# The full plaintext proposed at https://solvekryptos.com/solution (not verified by its author against Paradigm), as a hypothesis.
+
+cribs: 24 confirmed + 97 guessed
+
+== Quagmire I/II, any alphabet on one side (periods open under confirmed cribs)
+  QI  vig  AZ: still open at none -> all eliminated
+  QI  vig  KA: still open at none -> all eliminated
+  QI  beau AZ: still open at none -> all eliminated
+  QI  beau KA: still open at none -> all eliminated
+  QII vig  AZ: still open at none -> all eliminated
+  QII vig  KA: still open at none -> all eliminated
+  QII beau AZ: still open at none -> all eliminated
+  QII beau KA: still open at none -> all eliminated
+
+== general Quagmire III Beaufort / IV (periods open under confirmed cribs)
+  QIII beau period 13: UNSAT
+  QIII beau period 18: UNSAT
+  QIII beau period 23: UNSAT
+  QIII beau period 26: UNSAT
+  QIV vig period  8: UNSAT
+  QIV vig period 13: UNSAT
+  QIV vig period 16: UNSAT
+  QIV vig period 19: UNSAT
+  QIV vig period 20: UNSAT
+  QIV vig period 23: UNSAT
+  QIV vig period 24: UNSAT
+  QIV vig period 26: UNSAT
+
+== Hill 4x4 and periodic 27-48
+  AZ n=4 align=0: 24 blocks -> ELIMINATED
+  AZ n=4 align=1: 24 blocks -> ELIMINATED
+  AZ n=4 align=2: 23 blocks -> ELIMINATED
+  AZ n=4 align=3: 23 blocks -> ELIMINATED
+  KA n=4 align=0: 24 blocks -> ELIMINATED
+  KA n=4 align=1: 24 blocks -> ELIMINATED
+  KA n=4 align=2: 23 blocks -> ELIMINATED
+  KA n=4 align=3: 23 blocks -> ELIMINATED
+  periodic 27-48 vig  P:AZ C:AZ: survivors (period, constraints) none
+  periodic 27-48 vig  P:AZ C:KA: survivors (period, constraints) none
+  periodic 27-48 vig  P:KA C:AZ: survivors (period, constraints) none
+  periodic 27-48 vig  P:KA C:KA: survivors (period, constraints) none
+  periodic 27-48 beau P:AZ C:AZ: survivors (period, constraints) none
+  periodic 27-48 beau P:AZ C:KA: survivors (period, constraints) none
+  periodic 27-48 beau P:KA C:AZ: survivors (period, constraints) none
+  periodic 27-48 beau P:KA C:KA: survivors (period, constraints) none
+
+== 1. Periodic key, position-aligned (Vigenere/Beaufort/Quagmire I-IV)
+  beau P:AZ C:KA  falsifiable survivors: [(96, 1)]   (cribs stop constraining at period None)
+== 2. Progressive periodic key  k_i = K[i mod p] + s*floor(i/p)
+== 3. Autokey (key = earlier ciphertext or plaintext letter at lag L)
+  vig  P:AZ C:KA key=pt via y-alphabet  survivors: [(96, 1)]
+  vig  P:KA C:AZ key=pt via y-alphabet  survivors: [(96, 1)]
+  beau P:AZ C:AZ key=ct via x-alphabet  survivors: [(96, 1)]
+  beau P:AZ C:AZ key=ct via y-alphabet  survivors: [(96, 1)]
+  (43 family lines with no survivors omitted)

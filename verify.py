@@ -227,6 +227,58 @@ for seed in range(2):
             bad += trifid.solve(trifid.equalities(ct, per, off))[0] is not True
 check("Trifid, random cubes, several periods and offsets", bad == 0, f"{tot - bad}/{tot}")
 
+# ------------------------------------------------------------------ generated keystreams, autokey, sculpture grid
+import keygen
+rnd = random.Random(31)
+check("polynomial keystream (5 + 3i + 7C(i,2), KA Vigenere)",
+      keygen.poly(keygen.plant(rnd, [5 + 3 * i + 7 * (i * (i - 1) // 2) for i in range(97)])) == [("vig", "KA", "KA", 5, 3, 7, 0)])
+ks = [3, 17, 8, 22, 5]
+for i in range(5, 97):
+    ks.append((ks[i - 2] + ks[i - 5]) % 26)
+check("recurrence keystream (k_i = k_(i-2) + k_(i-5))",
+      ("vig", "KA", "KA", 2, 5, 1, 1, 0, 14) in keygen.recur(keygen.plant(rnd, ks))[0])
+pt, _ = fake_pt(32)
+key, ct, j = [KAI[ch] for ch in "PALIMPSEST"], [], 0
+for p in pt:
+    ct.append(KA[(KAI[p] + key[j % 10]) % 26])
+    j = 0 if ct[-1] == "S" else j + 1
+check("interrupted key (PALIMPSEST, restart after ciphertext S)",
+      any(h[:5] == ("S", 10, "vig", "KA", "KA") and h[5] >= 10 for h in keygen.ct_interrupt("".join(ct))[0]))
+texts = keygen.morse_texts()[1200:1300]
+best, where, _, _ = keygen.morse(keygen.plant(rnd, [KAI[texts[34][(17 + i) % len(texts[34])]] for i in range(97)]), texts)
+check("Morse phrases as the key (KA Vigenere, offset 17)", best == 24 and where[0] == ("vig", "KA", "KA", "KA"))
+
+import autokey_mixed
+pt, rnd = fake_pt(33)
+X = rnd.sample(AZ, 26)
+ct = list("QWERT")
+for i in range(5, 97):
+    ct.append(X[(X.index(pt[i]) + X.index(ct[i - 5])) % 26])
+check("ciphertext autokey under an unknown alphabet (lag 5)",
+      [L for L in range(1, 10) if autokey_mixed.solve(autokey_mixed.equations("".join(ct), "ct", L, "vig"))] == [5])
+
+import gridkey
+pt, rnd = fake_pt(34)
+lookup = {ch: rnd.randrange(26) for ch in AZ}
+ct = "".join(KA[(lookup[gridkey.TAB[r][c] if c < len(gridkey.TAB[r]) else "A"] - KAI[p]) % 26]
+             for p, (r, c) in zip(pt, gridkey.CELLS))
+here = [a for a in gridkey.ALIGN if a[0] in ("tableau cell, row +0 col +0", "tableau cell, row +3 col +0")]
+_, _, t = gridkey.run(ct, here)
+check("opposite tableau letter through a lookup table (KA Beaufort)",
+      [(c, lab, f) for c in t for lab, f in t[c]] == [(2, "tableau cell, row +0 col +0", ("beau", "KA", "KA"))])
+
+import keylanguage
+quad = next((f for f in (ROOT / "data/quadgrams.bin", ROOT / "data/quadgrams_local.bin") if f.exists()), None)
+if quad:
+    import numpy
+    keylanguage.LOGP = numpy.fromfile(quad, dtype=numpy.float32)
+    _, rnd = fake_pt(35)
+    _, best = keylanguage.search(keylanguage.plant(rnd, KA, KA, "vig", kryptos.K3_PT, 100), [KA])
+    check("English running key shows as English key fragments (K3 as key)",
+          best[0][1] == "vig P:KA C:KA key:KA" and best[0][3][:13] == kryptos.K3_PT[121:134] and best[0][0] > -4.6)
+else:
+    print("SKIP  English running key scoring (run checks/quadgrams_local.py or quadgrams.py first)")
+
 # ------------------------------------------------------------------ running key over downloaded texts
 carter = ROOT / "data/running_keys/carter_vol1.txt"
 if carter.exists():

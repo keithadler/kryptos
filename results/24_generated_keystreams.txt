@@ -1,0 +1,38 @@
+# python3 keygen.py
+# 2026-10-01T07:02Z
+
+== Polynomial keystream a + b*i + c*C(i,2) + d*C(i,3), 26^4 keys per family
+  K4 survivors: none
+  random ciphertexts x20: 0 survivors
+  planted 5 + 3i + 7C(i,2): [('vig', 'KA', 'KA', 5, 3, 7, 0)]
+== Two-term linear recurrence k_i = al*k_(i-a) + be*k_(i-b) + ga, lags a < b <= 9
+  K4: 5061888 tests, survivors: none
+  random ciphertexts x10: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] survivors
+  planted k_i = k_(i-2) + k_(i-5): [('vig', 'KA', 'KA', 2, 5, 1, 1, 0, 14)]
+== Interrupted key: restart after ciphertext letter X, key length 1-40
+  K4: 7888 constrained tests; survivors by constraints held: none
+  random ciphertexts x10: [{1: 16}, {1: 5}, {1: 3}, {1: 6}, {1: 1}, {1: 6}, {1: 23}, {1: 3}, 'none', {1: 3}]
+  planted (PALIMPSEST, restart after ciphertext S): best survivor ('S', 10, 'vig', 'KA', 'KA', 14)
+== Interrupted key: restart at/after plaintext letter X (X in the clue words), key length 2-26
+  K4: 1286208 constrained tests; survivors by constraints held: {1: 260}
+  random ciphertexts x5: [{1: 496, 2: 10, 3: 1}, {1: 736, 2: 20}, {1: 200}, {1: 948, 2: 84}, {1: 60}]
+  planted (PALIMPSEST, restart after plaintext T): best survivor ('T', 1, 10, (2, 3), 'vig', 'KA', 'KA', 14)
+== Key restarting at each word (EAST / NORTHEAST / BERLIN / CLOCK), any alphabet per key letter
+  key length 1 : contradiction: C at key letter 1 gives both M and P
+  key length 2 : contradiction: L at key letter 2 gives both V and Z
+  key length 3 : contradiction: C at key letter 1 gives both M and P
+  key length 4 : contradiction: E at key letter 2 gives both G and Y
+  key length 5 : contradiction: N at key letter 1 gives both Q and T
+  key length 6 : contradiction: T at key letter 4 gives both V and R
+  key length 7 : contradiction: T at key letter 4 gives both V and R
+  key length 8 : contradiction: T at key letter 4 gives both V and R
+  key length 9+: contradiction: T at key letter 4 gives both V and R
+== Morse phrases as a running or repeating key: 7200 orderings and spellings, every offset
+  K4: 10636800 tests, best 8/24 key letters (('beau', 'AZ', 'AZ', 'KA'), offset 37)
+  tests reaching m matches: {6: 2044, 7: 92, 8: 4, 9: 0}
+  expected by chance:        {6: 2544.5, 7: 256.8, 8: 21.5, 9: 1.5}
+  planted (KA Vigenere, offset 17): best 24/24 (('vig', 'KA', 'KA', 'KA'), offset 17)
+== Key strung together from city names: 502 time-zone database names (English spellings)
+  K4: longest piece of a key fragment inside a city name: (4, 'COPE')
+  random ciphertexts x20: [3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5]
+  planted (KA Vigenere, key CAIROMOSCOWHAVANA...): (8, 'HONOLULU')

@@ -8,6 +8,7 @@
 | `weltzeituhr_de.txt` | Raw wikitext of the German Wikipedia *Weltzeituhr (Alexanderplatz)* article (CC BY-SA 4.0), fetched 2026-09-28 | `https://de.wikipedia.org/w/index.php?title=Weltzeituhr_(Alexanderplatz)&action=raw` |
 | `running_keys/*.txt` (not committed) | Public-domain texts tried as running keys: Carter's *The Tomb of Tut-ankh-Amen* vols 1–3 (Internet Archive OCR), the King James Bible, the Declaration of Independence, the Bill of Rights, the Constitution, Poe's *Works* vol 1, and a 1923 Tutankhamen account (Project Gutenberg) | `checks/fetch_texts.sh` |
 | `quadgrams.bin` (not committed) | English four-letter-group log-probabilities built from `running_keys/` (KJV down-weighted) | `python3 quadgrams.py` |
+| `quadgrams_local.bin`, `quadgrams_de_local.bin`, `words_de_local.txt` (not committed) | English and German four-letter-group statistics and a German word list built from text already on a Mac: man pages and Perl pods (English), the German strings of macOS's localisation tables (German) | `python3 checks/quadgrams_local.py [german]` |
 | `keyword_orders.txt` (not committed) | Column orders from 115k dictionary words, proper names and theme phrases, widths 12–30 | `python3 keywords.py > data/keyword_orders.txt` |
 
 Counts check: the left side has 869 characters and the tableau 867, matching Wikipedia's published counts.

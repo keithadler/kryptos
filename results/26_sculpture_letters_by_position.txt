@@ -1,0 +1,17 @@
+# python3 gridkey.py
+# 2026-10-01T06:59Z
+
+23592 alignments x 8 families = 188736 tests
+tableau letters directly opposite the clue letters: HIJLMNQUVWXZK | KRYABCDEFGH
+== K4
+  exact: best 8/24 key letters at ('tableau boustrophedon, offset 65', ('vig', 'AZ', 'AZ'), 'KA')
+  any lookup table: survivors by constraints held: {1: 374, 2: 53}
+  the directly opposite tableau letter through any lookup table: contradiction in all 8 families (2 constraints)
+== Random ciphertexts with the same clue letters
+  exact best 7/24; lookup-table survivors {1: 441, 2: 35}
+  exact best 7/24; lookup-table survivors {1: 476, 2: 35, 3: 11}
+  exact best 7/24; lookup-table survivors {1: 679, 2: 62}
+  exact best 8/24; lookup-table survivors {1: 201, 2: 38}
+  exact best 7/24; lookup-table survivors {1: 384, 2: 23}
+  exact best 7/24; lookup-table survivors {1: 793, 2: 60, 3: 10}
+== Planted: opposite tableau letter through a random lookup table, KRYPTOS Beaufort -> found, 2 constraints

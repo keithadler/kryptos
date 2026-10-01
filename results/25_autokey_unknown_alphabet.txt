@@ -1,0 +1,39 @@
+# python3 autokey_mixed.py
+# 2026-10-01T06:56Z
+
+== Ciphertext autokey, lags 1-21 (24 equations each)
+  vig    : SAT none, unresolved none   (random x5: 0 of 105 not UNSAT)
+  beau   : SAT none, unresolved none   (random x5: 0 of 105 not UNSAT)
+  varbeau: SAT none, unresolved none   (random x5: 0 of 105 not UNSAT)
+== Plaintext autokey, lags inside the clue runs (K4 against 30 random ciphertexts)
+  vig     lag  1 (22 equations): K4 UNSAT      random SAT  0/30
+  vig     lag  2 (20 equations): K4 UNSAT      random SAT  0/30
+  vig     lag  3 (18 equations): K4 UNSAT      random SAT  0/30, 1 unresolved
+  vig     lag  4 (16 equations): K4 UNSAT      random SAT  0/30, 1 unresolved
+  vig     lag  5 (14 equations): K4 UNSAT      random SAT  4/30
+  vig     lag  6 (12 equations): K4 UNSAT      random SAT  8/30
+  vig     lag  7 (10 equations): K4 UNSAT      random SAT  8/30
+  vig     lag  8 ( 8 equations): K4 UNSAT      random SAT 18/30, 1 unresolved
+  vig     lag  9 ( 6 equations): K4 UNSAT      random SAT 27/30
+  vig     lag 10 ( 4 equations): K4 UNSAT      random SAT 24/30
+  beau    lag  1 (22 equations): K4 UNSAT      random SAT  0/30
+  beau    lag  2 (20 equations): K4 UNSAT      random SAT  0/30
+  beau    lag  3 (18 equations): K4 UNSAT      random SAT  0/30, 1 unresolved
+  beau    lag  4 (16 equations): K4 UNSAT      random SAT  0/30
+  beau    lag  5 (14 equations): K4 UNSAT      random SAT  3/30
+  beau    lag  6 (12 equations): K4 SAT        random SAT 16/30
+  beau    lag  7 (10 equations): K4 SAT        random SAT 18/30, 1 unresolved
+  beau    lag  8 ( 8 equations): K4 SAT        random SAT 26/30
+  beau    lag  9 ( 6 equations): K4 UNSAT      random SAT  0/30
+  beau    lag 10 ( 4 equations): K4 SAT        random SAT 30/30
+  varbeau lag  1 (22 equations): K4 UNSAT      random SAT  0/30
+  varbeau lag  2 (20 equations): K4 UNSAT      random SAT  0/30
+  varbeau lag  3 (18 equations): K4 UNSAT      random SAT  0/30, 1 unresolved
+  varbeau lag  4 (16 equations): K4 UNSAT      random SAT  0/30
+  varbeau lag  5 (14 equations): K4 UNSAT      random SAT  4/30, 1 unresolved
+  varbeau lag  6 (12 equations): K4 UNSAT      random SAT 17/30
+  varbeau lag  7 (10 equations): K4 UNSAT      random SAT 22/30
+  varbeau lag  8 ( 8 equations): K4 UNSAT      random SAT 28/30
+  varbeau lag  9 ( 6 equations): K4 UNSAT      random SAT  0/30
+  varbeau lag 10 ( 4 equations): K4 UNSAT      random SAT 29/30
+== Planted: ciphertext autokey, lag 5, random alphabet -> SAT at lags [5]

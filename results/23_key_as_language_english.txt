@@ -1,0 +1,33 @@
+# python3 keylanguage.py english
+# 2026-10-01T06:55Z
+
+language: english; quadgram model: quadgrams_local.bin
+== English key fragments of the same shape (K2/K3 plaintext, 218 samples): worst -5.13, median -4.38, best -3.52
+== Fixed alphabets (A-Z and KRYPTOS), 8 families and variant Beaufort
+  K4: 21 tests
+     -7.33  beau P:KA C:KA key:AZ                                    XYHANZEFHYHMK | BNENTXBQRMA
+     -7.38  varbeau P:AZ C:KA key:AZ                                 SJRXTUOSORAMN | ICOPEJKMCZK
+     -7.51  varbeau P:KA C:AZ key:KA                                 SVICPIFGROWHF | UGFVVKWMKQJ
+  planted A-Z Vigenere, K2/K3 plaintext as key: 21 tests
+     -4.44  vig P:AZ C:AZ key:AZ                                     LANGLEYKNOWAB | THERESOMEWH
+  planted KRYPTOS Vigenere, K2/K3 plaintext as key: 21 tests
+     -3.96  vig P:KA C:KA key:KA                                     URSECONDSWEST | LYTHEREMAIN
+  planted KRYPTOS Beaufort, K2/K3 plaintext as key: 21 tests
+     -4.01  beau P:KA C:KA key:KA                                    INGTHEHOLEALI | EDINTHEHOTA
+  -> K4's best (-7.33) is below the worst English fragment (-5.13): ELIMINATED for any English key text
+== Dictionary-keyed alphabets: 207941 alphabets, 5 arrangements
+  K4: 7485876 tests
+     -5.23  vig P:W C:W key:W            IREPABLCDFGHJKMNOQSTUVWXYZ  CEFEEREDADFIZ | GWENTACTTWI
+     -5.26  vig P:W C:KA key:W           SUBDIVERFYACGHJKLMNOPQTWXZ  ERUSBUTVERLEA | MTTESGRYONC
+     -5.35  vig P:W C:AZ key:W           PHYCOXANTIBDEFGJKLMQRSUVWZ  QXUFIESIEROVB | CESOBEITHER
+  planted TELESCOPE beau (Quagmire III), K2/K3 plaintext as key: 7485876 tests
+     -4.36  beau P:W C:W key:W           TELSCOPABDFGHIJKMNQRUVWXYZ  ABOUTTHISTHEY | EREXWHOKNOW
+      right alphabet found: True
+  planted PALIMPSEST vig (Quagmire III), K2/K3 plaintext as key: 7485876 tests
+     -4.48  vig P:W C:W key:W            PALIMSETBCDFGHJKNOQRUVWXYZ  AMETOFLICKERB | THINEMERGED
+      right alphabet found: True
+  planted SHADOW vig (Quagmire III), K2/K3 plaintext as key: 7485876 tests
+     -3.98  vig P:W C:W key:W            SHADOWBCEFGIJKLMNPQRTUVXYZ  WAYWASREMOVED | REACHINTHEU
+      right alphabet found: True
+  random ciphertexts x8, best score each: [-5.17, -5.15, -5.14, -5.13, -5.02, -4.98, -4.93, -4.92]
+  -> K4's best (-5.23) is inside the random range. 94% of English fragments would have beaten every random best, so this is a no-signal result at about that power, not a proof.

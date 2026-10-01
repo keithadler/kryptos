@@ -39,6 +39,10 @@ every apparent hit is compared with what random letters produce under the same t
 Also ruled out:
 - running keys taken from the K1–K3 solutions, the sculpture itself, Howard Carter's *The Tomb of
   Tut-ankh-Amen* (the source of K3) and the Bible;
+- a running key from *any* English or German text with the plain or KRYPTOS alphabet: the key the
+  clues force isn't language;
+- keys made by a rule instead of a text: a formula in the position, a recurrence, a key that
+  restarts at a chosen letter or at each word, and autokey under any alphabet at short lags;
 - the Hill cipher, and anything built on a 5×5 square (Playfair, Bifid, four-square);
 - K1/K2's cipher applied twice (K2 ends with the words "LAYER TWO");
 - ciphers that can't turn a letter into itself: position 74 is K→K.
@@ -54,7 +58,7 @@ out", each result with its evidence log, guessed-plaintext experiments, and what
 ## Run it
 
 ```
-make verify                 # build, then 21 planted-cipher checks (~25 s)
+make verify                 # build, then 28 planted-cipher checks (~30 s)
 checks/fetch_texts.sh       # optional: the public-domain texts tried as running keys
 checks/reproduce.sh         # regenerate the evidence logs in results/
 python3 docs/make_figures.py
