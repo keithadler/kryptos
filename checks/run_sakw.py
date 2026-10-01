@@ -1,7 +1,7 @@
 """Keyword-alphabet annealing (bin/sakw) at the key lengths the clues leave open: planted recovery,
 then K4, then random ciphertexts, for the Vigenere and Beaufort forms.
 
-usage: checks/run_sakw.py [MODE] [MAXKW] [RESTARTS] [ITERS]     defaults: 4 10 24 3000000
+usage: checks/run_sakw.py [MODE] [MAXKW] [RESTARTS] [ITERS] [LENGTHS]     defaults: 4 10 24 3000000 all-open
 A length counts only where planted ciphers (random letter-string keywords, real English, clue words
 in place) are recovered. Recovered = at least 90 of 97 letters.
 """
@@ -19,6 +19,8 @@ ITERS = sys.argv[4] if len(sys.argv) > 4 else "3000000"
 ONE = (13, 16, 19, 20, 23, 24, 26)          # open for one free alphabet (Quagmire I/II, SEARCH.md 4.E)
 OPEN = {4: {"vig": (8, 13, 16, 19, 20, 23, 24, 26), "beau": (8, 13, 16, 19, 20, 23, 24, 26)},
         3: {"vig": (), "beau": (23, 26)}}.get(MODE, {"vig": ONE, "beau": ONE})
+if len(sys.argv) > 5:
+    OPEN = {k: tuple(p for p in v if str(p) in sys.argv[5].split(",")) for k, v in OPEN.items()}
 AZ = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 NPLANT, NK4, NRANDOM = 8, 4, 4
 
